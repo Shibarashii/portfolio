@@ -1,0 +1,266 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Seanrei Ethan Valdeabella} \\ \vspace{1pt}
+    \small \href{mailto:seanrei.ethan23@gmail.com}{\underline{seanrei.ethan23@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/seanrei-valdeabella/}{\underline{linkedin.com/in/seanrei-valdeabella}} $|$
+    \href{https://github.com/Shibarashii}{\underline{github.com/Shibarashii}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Laguna State Polytechnic University}{Santa Cruz, Laguna, Philippines}
+      {Bachelor of Science in Computer Science, Major in Intelligent Systems, GPA: 1.38}{July 3, 2026}
+      \resumeItemListStart
+        \resumeItem{Best in Thesis} 
+        \resumeItem{2026 Intercollegiate Student Research Congress Participant}
+        \resumeItem{DOST Scholar (2022 -- 2026)}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Saint Thomas Montessori Learning Center}{Santo Tomas, Batangas, Philippines}
+      {Secondary Education, Final Grade: 97}{May, 2022}
+      \resumeItemListStart
+        \resumeItem{With High Honors}
+        \resumeItem{Research Awardee}
+        \resumeItem{Oral Defense Awardee}
+        \resumeItem{Best in Science}
+        \resumeItem{Academic Excellence Award}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------LEADERSHIP EXPERIENCE-----------
+\section{Leadership}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Undergraduate Thesis}{2025 -- 2026}
+      {Project Manager and Model Developer}{LSPU Santa Cruz}
+      \resumeItemListStart
+        \resumeItem{Directed a three-person project team, coordinating task assignments, roles, deadlines, project scope, and timeline.}
+        \resumeItem{Managed team communication and served as the central point for progress updates, task coordination, and conflict resolution.}
+        \resumeItem{Maintained project momentum and team morale through active coordination, clear communication, and timely support.}
+      \resumeItemListEnd
+      \resumeSubheading
+      {Software Engineering}{2025 -- 2026}
+      {Team Leader, Lead Developer}{LSPU Santa Cruz}
+      \resumeItemListStart
+        \resumeItem{Oversaw project progress by coordinating team members, assigning tasks, and tracking development priorities.}
+        \resumeItem{Contributed the majority of the codebase, implementing core features and functionality.}
+        \resumeItem{Analyzed and reviewed team members’ code to ensure quality and consistency before merging changes into the main codebase.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Back-End Developer Intern}{January 2026 -- April 2026}
+      {Department of Science and Technology}{Remote, based in Taguig City, Philippines}
+
+      \resumeItemListStart
+        \resumeItem{Developed and maintained microservices and REST APIs using TypeScript and Node.js.}
+        \resumeItem{Implemented user stories across backend services, translating requirements into features.}
+        \resumeItem{Integrated Apache Kafka to support reliable asynchronous communication between microservices.}
+        \resumeItem{Created comprehensive unit tests with Jest to improve code reliability and regression coverage.}
+        \resumeItem{Conducted code reviews focused on maintainability, performance, and adherence to backend development standards.}
+        \resumeItem{Facilitated knowledge-transfer sessions for peers and new team members on backend systems and development practices}
+      \resumeItemListEnd
+
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+        {\textbf{\href{https://github.com/Shibarashii/nail-feature-classifier}{\underline {Nail Feature Classifier}}} $|$
+        \emph{Python, PyTorch, Grad-CAM}}
+        {September 2025 -- November 2025}
+          \resumeItemListStart
+            \resumeItem{Developed a deep learning image-classification pipeline for the thesis “Probabilistic Detection of Systemic Diseases Using Deep Learning on Fingernail Biomarkers.”}
+            \resumeItem{Implemented configurable model factories and training strategies, including baseline, from-scratch, full fine-tuning, and gradual layer unfreezing.}
+            \resumeItem{Built evaluation, model-comparison, Grad-CAM interpretability, and reproducibility tools to assess performance and visualize relevant nail-image features.}
+          \resumeItemListEnd
+
+
+      \resumeProjectHeading
+        {\textbf{\href{https://github.com/khat001/DAMA-Filipino-Braille-Converter}{\underline {DAMA - Braille Image-to-Text Converter}}} $|$
+        \emph{Python, PyTorch, Flask, LLM, Open-CV }}
+        {December 2025}
+          \resumeItemListStart
+            \resumeItem{Developed a YOLOv8-based OCR system that detects Filipino/English Grade 1 Braille characters and converts them into structured text using LLM-assisted processing.}
+            \resumeItem{Integrated the Braille detection model with Flask to provide image-based Braille recognition and text conversion.}
+            \resumeItem{Implemented bilingual text processing features, including line and sentence organization, Filipino/English spell checking, LLM-based error correction, missing-character detection, confidence scoring, and detailed reporting.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{\href{https://github.com/Shibarashii/automated-barangay-clearance-system}{\underline {Automated Barangay Clearance System}}} $|$
+        \emph{C\#, .NET, Windows Forms, SQLite3}}
+        {December 2024}
+          \resumeItemListStart
+            \resumeItem{Led full-stack development of a password-protected desktop application that automated barangay clearance generation by syncing citizen data from Google Forms and Google Sheets.}
+            \resumeItem{Implemented SQLite-based offline storage, smart multi-field search, approval workflows, date-filtered records history, real-time document previews, PDF printing, and .xlsx export using ClosedXML.}
+            \resumeItem{Built secure configuration features, including SHA-256 password authentication, password recovery codes, dynamic Google Sheets settings, and service-account JSON key management.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{\href{https://github.com/Shibarashii/task-management-system}{\underline {Task Management System}}} $|$
+        \emph{C\#, .NET, Windows Forms, MySQL, SendGrid }}
+        {December 2023}
+          \resumeItemListStart
+            \resumeItem{Built and maintained the backend, authoring the database schema and SQL deployment scripts for reproducible environment setup.}
+            \resumeItem{Implemented core business logic and data integrity features: automated project progress and deadline-driven status updates, role-based access control, and a soft-delete cascade to prevent orphaned records.}
+            \resumeItem{Integrated SendGrid-based password recovery and image compression/preview for task completion submissions, and added server-side validation plus search/filter/sort support to improve reliability and usability.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{\href{https://github.com/Shibarashii/community-suggestion-and-feedback-system}{\underline {Community Suggestion and Feedback System}}} $|$
+        \emph{C\#, .NET, Windows Forms, MySQL }}
+        {December 2023}
+          \resumeItemListStart
+            \resumeItem{Developed and maintained the backend architecture and database schema for a Windows Forms community suggestion app, implementing secure admin authentication, mail lifecycle operations (inbox, starred, spam, trash), and dashboard queries to surface key metrics.}
+            \resumeItem{Designed and implemented a simple keyword-based spam detection system and blacklist management that loads spam words from the database and uses regex word-boundary matching across email, subject, and body to compute a spam score and flag submissions; included admin controls to manage the blacklist and restore false positives.}
+            \resumeItem{Implemented robust input and attachment handling for submissions, enforcing validation rules, support for image attachments, and provided SQL import and connection configuration for easy local deployment.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, JavaScript, C\#, HTML/CSS, SQL (Postgres)} \\
+     \textbf{Frameworks}{: React, Node.js, Django, PyTorch, .NET } \\
+     \textbf{Tools}{: Git, VS Code, Visual Studio, Antigravity, Postman, Google Colab, Figma } \\
+     \textbf{Libraries}{: pandas, NumPy, Matplotlib, scikit-learn } \\
+     \textbf{Operating Systems}{: Windows, Linux Mint, Arch Linux, Fedora Linux} 
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
