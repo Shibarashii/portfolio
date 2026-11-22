@@ -21,7 +21,19 @@ This repo holds two things: Seanrei Valdeabella's portfolio documents, and the p
 
 ## Website
 - Stack: React + Vite (decided 2026-11-21).
+- Design: Figma file `zS6WnE2UAjd8LnLRyVCu8D`. Read [specs/figma-workflow.md](specs/figma-workflow.md) before coding any visual design. The direction is Family album (chosen 2026-11-22). It is built in Foundations, Components and Designs, light and dark, all tagged `[Ready for dev]` (2026-11-22). `specs/intent/visual-design.md` and `specs/ideas/project-cards.md` are dropped, so don't build from them. Only build from sections tagged `[Ready for dev]`. No emojis in Figma names or copy.
 - _TBD: hosting, and dev/build/test commands. Fill this in when the site is scaffolded._
+
+## Starting a Figma design session
+Do this before changing anything in the Figma file, so new work matches what is there.
+1. Read [specs/figma-workflow.md](specs/figma-workflow.md), the file's README page, and the "Visual design" and "Skills shown" parts of `specs/SPEC.md`.
+2. Load the `figma-use` skill, plus `figma-generate-library` for components or `figma-generate-design` for pages. Call `create_session` once and pass its ID on every call.
+3. Read the current state first (section tags, component names, the frames you will touch). Seanrei may have edited the file by hand, so never rebuild from memory or from an old session's notes.
+4. Reuse before making anything: `color/*`, `space/*`, `radius/*` and `layout/*` variables, the text and effect styles, and the components. No raw hex, no one-off text sizes, no detached instances. Brand logos keep their own colors.
+5. New ideas go in Explorations and wait for Seanrei's pick. Approved work goes Foundations, then Components, then Designs.
+6. Page layout changes are made in four frames: desktop and mobile, each in light and dark. Component changes reach all four on their own.
+7. Finish with the checks in figma-workflow.md. Retag a section `[Ready for dev]` only on Seanrei's OK.
+8. Update `specs/SPEC.md`, `specs/todo.md` and this file if a decision changed.
 
 ## Boundaries
 - The CV holds personal contact details. Never send its contents, or the PDFs, to outside services unless asked.

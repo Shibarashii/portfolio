@@ -15,11 +15,11 @@ A one-page React + TS + Vite site in `website/`, deployed to GitHub Pages. The r
 ## Dependency Graph
 ```
 T1 scaffold + deploy ─┬─ T2 course completions (parser, test, Credentials shell)
-                      └─ T3 content.ts + Projects ─┬─ T4 About + nav
+                      └─ T3 content.ts + Projects ─┬─ T4 About, Contact + nav
                                                    ├─ T5 Experience
                                                    ├─ T6 Skills
                                                    └─ T7 hand-listed Credentials (needs T2 too)
-                                     T4–T7 ──────── T8 polish + a11y + CLAUDE.md commands
+                                     T4–T7 ──────── T8 polish + a11y + CLAUDE.md commands ── T9 project images
 ```
 T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`, so they run **one after another**, not in parallel.
 
@@ -35,7 +35,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 
 ### Phase 2: Sections
 - [ ] T3: Content types + Projects section
-- [ ] T4: About section + section nav
+- [ ] T4: About and Contact sections + section nav
 - [ ] T5: Experience section
 - [ ] T6: Skills section
 - [ ] T7: Hand-listed Credentials subsections
@@ -45,10 +45,11 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 - [ ] Human review of the content wording
 
 ### Phase 3: Polish
-- [ ] T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95
+- [ ] T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95 (waits for `[Ready for dev]` designs)
+- [ ] T9: Project images
 
 ### Checkpoint C: Complete
-- [ ] All 7 spec success criteria met on the live site
+- [ ] All 9 spec success criteria met on the live site
 
 ## Risks and Mitigations
 | Risk | Impact | Mitigation |
@@ -56,7 +57,10 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 | Vite won't serve or bundle PDFs outside `website/` | High | `server.fs.allow: ['..']`. T1 tests it with the CV link before anything else depends on it. |
 | Wrong `base` path breaks assets on Pages | High | `base: '/portfolio/'`, checked on the live URL in T1 |
 | Node can't run the parser test (TS syntax, `.ts` imports) | Med | Parser uses erasable TS only (no enums), and imports keep `.ts` extensions |
-| Pages deploy blocked because the repo is private | Med | Seanrei makes the repo public and sets Pages Source to GitHub Actions before T1's deploy check |
+| The first push publishes the CV's phone number and email | High | The repo is already public. Seanrei decides spec Open Question 1 before T1 pushes anything. |
+| Pages isn't turned on | Med | Seanrei sets Pages Source to GitHub Actions before T1's deploy check |
+| A drawn figure shows something the project doesn't do | Med | Draw from the code, and Seanrei signs off each one (T9) |
+| A screenshot shows someone's personal data | High | Seanrei checks each one at full size before it ships (T9). No screenshot until then. |
 | File names with spaces and dots break URLs | Low | Vite hashes and encodes asset names. T2 opens a few links to check. |
 
 ## Open Questions
