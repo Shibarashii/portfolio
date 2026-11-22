@@ -26,6 +26,7 @@ The subsection headings below are the defaults. They live in `content.ts`, so re
 - **Contact** is the last section of the page, not a separate page. It has links, not a form: a form on a static host would need an outside service.
 - **Empty subsections** are not rendered. For example, Hardware & Homelab stays hidden until it has a project.
 - **Credentials entries without a PDF** render as a card with no link. Civil Service eligibility is one of these.
+- **Awards & Recognition** lists the Research Congress certificate and the awards in the CV's Education section (decided 2026-11-22).
 - **Course Completions** is collapsed by default in a `<details>` element (its `h3` sits outside the `<summary>`), split into Specializations and Courses, newest first. **It's generated from the file names in `completions/`**, never typed by hand.
 
 ### Skills shown

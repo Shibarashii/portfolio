@@ -333,12 +333,19 @@ export const credentials: Group<Credential>[] = [
   {
     heading: 'Awards & Recognition',
     items: [
+      { title: 'Best in Thesis', issuer: 'Laguna State Polytechnic University' },
       {
         title: '2026 Intercollegiate Student Research Congress',
         issuer: 'Laguna State Polytechnic University',
         date: '2026-05-21',
         pdf: researchCongress,
       },
+      { title: 'DOST Scholar (2022 to 2026)', issuer: 'Department of Science and Technology' },
+      { title: 'With High Honors', issuer: 'Saint Thomas Montessori Learning Center' },
+      { title: 'Research Awardee', issuer: 'Saint Thomas Montessori Learning Center' },
+      { title: 'Oral Defense Awardee', issuer: 'Saint Thomas Montessori Learning Center' },
+      { title: 'Best in Science', issuer: 'Saint Thomas Montessori Learning Center' },
+      { title: 'Academic Excellence Award', issuer: 'Saint Thomas Montessori Learning Center' },
     ],
   },
 ]

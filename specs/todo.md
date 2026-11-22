@@ -122,7 +122,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - Certifications: ITS certificate
 - Assessments: TOPCIT
 - Eligibility: Civil Service card, no PDF
-- Awards & Recognition: Research Congress
+- Awards & Recognition: Research Congress, plus the awards in the CV's Education section
 
 Also append the hand-listed Introduction to Github entry to Courses.
 
