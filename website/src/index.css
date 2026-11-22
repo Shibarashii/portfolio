@@ -49,3 +49,13 @@
     list-style: none;
   }
 }
+
+/* Stickers are white in both themes, because some logos are black. T8 does the rest. */
+.sticker {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 54px;
+  block-size: 54px;
+  background: white;
+  color: black;
+}

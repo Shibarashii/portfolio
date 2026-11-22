@@ -5,6 +5,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/portfolio/',
   plugins: [react()],
+  // Keeps the logos as files, so they load lazily instead of growing the JS
+  build: { assetsInlineLimit: 0 },
   // The PDFs are imported from the repo root, one level up
   server: { fs: { allow: ['..'] } },
 })

@@ -44,7 +44,7 @@ Regrouped 2026-11-22. This list replaces the CV's Technical Skills. Each skill a
 
 Desktop pairs the first six subsections, two to a row. The last two take a row each. Mobile stacks all eight.
 
-Logos: Devicon v2.17.0 (MIT), except Claude Code and Antigravity (LobeHub Icons v1.101.0, MIT), Neon and Render (Simple Icons v16, CC0), and SQL (letters). Brand logos stay their owners' trademarks.
+Logos: Devicon v2.17.0 (MIT), except Claude Code and Antigravity (LobeHub Icons v1.101.0, MIT), Neon and Render (Simple Icons v16.20.0, CC0), and SQL (letters). Linux is Devicon's SVG resized to a WebP, since the SVG is 194 kB. Matplotlib is Devicon's plain version, as in Figma. Brand logos stay their owners' trademarks. Licenses are in `src/logos/LICENSES.txt`.
 
 ### Projects shown
 These 8 are the full list, in this order. Facts come from each repo, checked on 2026-11-22.
@@ -264,7 +264,7 @@ Before T9:
 7. **Copying screenshots into this repo.** PC Flipper's are in the local clone. The others need downloading, which needs Seanrei's OK on a file list.
 
 Before T6:
-8. **Adding the 41 skill logos to this repo** needs Seanrei's OK. So far they are approved for Figma only.
+8. **Adding the 41 skill logos to this repo.** Decided 2026-11-22: approved and added in T6.
 9. **The CV lists fewer skills than the site.** 15 of the skills added 2026-11-22 aren't on the CV, and the CV's "SQL (Postgres)" is two entries here: SQL and PostgreSQL. Decided 2026-11-22: leave the CV as it is for now.
 
 Before T4:

@@ -4,6 +4,7 @@ import { Contact } from './sections/Contact.tsx'
 import { Credentials } from './sections/Credentials.tsx'
 import { Experience } from './sections/Experience.tsx'
 import { Projects } from './sections/Projects.tsx'
+import { Skills } from './sections/Skills.tsx'
 
 export function App() {
   return (
@@ -13,6 +14,7 @@ export function App() {
         <About />
         <Projects />
         <Experience />
+        <Skills />
         <Credentials />
         <Contact />
       </main>

@@ -42,7 +42,7 @@ Every frame sets its Theme and Breakpoint mode. Dark frames are copies with Them
 
 ## Privacy
 - From the CV, only skill names are approved for Figma. Other CV text stays a placeholder. The email in Figma is `name@example.com`.
-- Uploading a screenshot or photo needs Seanrei's OK for that file. Approved so far: PC Flipper's `build-page.png` and `light-and-dark.png`, and the skill logos. The logos are not approved for this repo yet.
+- Uploading a screenshot or photo needs Seanrei's OK for that file. Approved so far: PC Flipper's `build-page.png` and `light-and-dark.png`, and the skill logos. The logos are also approved for this repo (2026-11-22).
 
 ## Plugin API traps we hit
 - Setting `textDecoration` on styled text changes the shared style. Use the `Label/Button hover` and `Label/Nav hover` styles.

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { cvLink, github, linkedin } from '../content.ts'
 
-// Only the sections that are built, in page order
-const sections = ['About', 'Projects', 'Experience', 'Credentials', 'Contact']
+// In page order
+const sections = ['About', 'Projects', 'Experience', 'Skills', 'Credentials', 'Contact']
 
 export function Header() {
   const [open, setOpen] = useState(false)

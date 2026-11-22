@@ -1,5 +1,6 @@
 import ojtCertificate from '../../accomplishments/DOST OJT Certificate of Completion.pdf?url'
 import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
+import * as logos from './logos/index.ts'
 
 export type Group<T> = { heading: string; items: T[] }
 
@@ -18,6 +19,8 @@ export type Project = {
 }
 
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
+
+export type Skill = { name: string; logo?: string }
 
 export type Credential = { title: string; issuer: string; date: string; pdfs?: { label: string; url: string }[] }
 
@@ -211,6 +214,92 @@ export const experience: Group<Role>[] = [
           'Analyzed and reviewed team members’ code to ensure quality and consistency before merging changes into the main codebase.',
         ],
       },
+    ],
+  },
+]
+
+// No logo means a lettered sticker
+export const skills: Group<Skill>[] = [
+  {
+    heading: 'Languages',
+    items: [
+      { name: 'Python', logo: logos.python },
+      { name: 'JavaScript', logo: logos.javascript },
+      { name: 'TypeScript', logo: logos.typescript },
+      { name: 'C#', logo: logos.csharp },
+      { name: 'SQL' },
+    ],
+  },
+  {
+    heading: 'Frontend',
+    items: [
+      { name: 'HTML', logo: logos.html },
+      { name: 'CSS', logo: logos.css },
+      { name: 'Bootstrap', logo: logos.bootstrap },
+      { name: 'Tailwind CSS', logo: logos.tailwindcss },
+      { name: 'React', logo: logos.react },
+      { name: 'Vite', logo: logos.vite },
+    ],
+  },
+  {
+    heading: 'Backend',
+    items: [
+      { name: 'Node.js', logo: logos.nodejs },
+      { name: 'Express.js', logo: logos.express },
+      { name: 'Django', logo: logos.django },
+      { name: '.NET', logo: logos.dotnet },
+      { name: 'Kafka', logo: logos.kafka },
+    ],
+  },
+  {
+    heading: 'Databases',
+    items: [
+      { name: 'PostgreSQL', logo: logos.postgresql },
+      { name: 'MySQL', logo: logos.mysql },
+      { name: 'SQLite', logo: logos.sqlite },
+      { name: 'Neon', logo: logos.neon },
+    ],
+  },
+  {
+    heading: 'Data & Machine Learning',
+    items: [
+      { name: 'PyTorch', logo: logos.pytorch },
+      { name: 'scikit-learn', logo: logos.scikitlearn },
+      { name: 'pandas', logo: logos.pandas },
+      { name: 'NumPy', logo: logos.numpy },
+      { name: 'Matplotlib', logo: logos.matplotlib },
+    ],
+  },
+  {
+    heading: 'Deployment',
+    items: [
+      { name: 'Docker', logo: logos.docker },
+      { name: 'Vercel', logo: logos.vercel },
+      { name: 'Render', logo: logos.render },
+    ],
+  },
+  {
+    heading: 'Developer Tools',
+    items: [
+      { name: 'Git', logo: logos.git },
+      { name: 'VS Code', logo: logos.vscode },
+      { name: 'Visual Studio', logo: logos.visualstudio },
+      { name: 'Claude Code', logo: logos.claudecode },
+      { name: 'Antigravity', logo: logos.antigravity },
+      { name: 'Postman', logo: logos.postman },
+      { name: 'Figma', logo: logos.figma },
+      { name: 'Google Colab', logo: logos.googlecolab },
+    ],
+  },
+  {
+    heading: 'Operating Systems',
+    items: [
+      { name: 'Windows', logo: logos.windows },
+      { name: 'Linux', logo: logos.linux },
+      { name: 'Ubuntu', logo: logos.ubuntu },
+      { name: 'Linux Mint', logo: logos.linuxmint },
+      { name: 'Arch Linux', logo: logos.archlinux },
+      { name: 'Fedora Linux', logo: logos.fedora },
     ],
   },
 ]

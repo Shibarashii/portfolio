@@ -104,17 +104,17 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Description:** Add `skills` data and `Skills.tsx`, each skill a logo sticker with its name, in the eight subsections of the spec's "Skills shown".
 
 **Acceptance criteria:**
-- [ ] Eight `h3` subsections in that order
-- [ ] Every skill in "Skills shown" appears exactly once
-- [ ] Each sticker list has `role="list"`
-- [ ] Its nav link is added to `Header.tsx`
+- [x] Eight `h3` subsections in that order
+- [x] Every skill in "Skills shown" appears exactly once
+- [x] Each sticker list has `role="list"`
+- [x] Its nav link is added to `Header.tsx`
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: compare against "Skills shown"
+- [x] `npm run build` passes
+- [x] Manual: compare against "Skills shown"
 
 **Dependencies:** T3
-**Files:** `src/content.ts`, `src/sections/Skills.tsx`, `src/App.tsx`, `src/components/Header.tsx`
+**Files:** `src/content.ts`, `src/sections/Skills.tsx`, `src/logos/`, `vite.config.ts`, `src/App.tsx`, `src/components/Header.tsx`
 **Scope:** S
 
 ### T7: Hand-listed Credentials subsections
