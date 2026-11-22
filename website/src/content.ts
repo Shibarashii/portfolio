@@ -1,4 +1,10 @@
+import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
+
 export type Group<T> = { heading: string; items: T[] }
+
+export type School = { school: string; degree: string; years: string }
+
+export type Link = { label: string; url: string }
 
 export type Project = {
   title: string
@@ -13,6 +19,36 @@ export type Project = {
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
 
 export type Credential = { title: string; issuer: string; date: string; pdfs?: { label: string; url: string }[] }
+
+export const email = 'seanrei.ethan23@gmail.com'
+
+export const github: Link = { label: 'GitHub', url: 'https://github.com/Shibarashii' }
+export const linkedin: Link = { label: 'LinkedIn', url: 'https://www.linkedin.com/in/seanrei-valdeabella' }
+export const cvLink: Link = { label: 'CV', url: cv }
+
+// TODO: draft from the CV, for Seanrei to edit
+export const whoIAm: Group<string> = {
+  heading: 'Who I Am',
+  items: [
+    'I’m a Computer Science graduate of Laguna State Polytechnic University, where I majored in Intelligent Systems. I build full-stack web applications and machine learning models. I interned as a back-end developer at the Department of Science and Technology, working on microservices and REST APIs in TypeScript and Node.js, and I managed the three-person team behind my undergraduate thesis.',
+  ],
+}
+
+export const education: Group<School> = {
+  heading: 'Education',
+  items: [
+    {
+      school: 'Laguna State Polytechnic University',
+      degree: 'Bachelor of Science in Computer Science, Major in Intelligent Systems',
+      years: 'Graduated July 2026',
+    },
+    {
+      school: 'Saint Thomas Montessori Learning Center',
+      degree: 'Secondary Education',
+      years: 'Graduated May 2022',
+    },
+  ],
+}
 
 export const projects: Group<Project>[] = [
   {
@@ -127,3 +163,10 @@ export const projects: Group<Project>[] = [
   },
   { heading: 'Hardware & Homelab', items: [] },
 ]
+
+export const writeToMe: Group<string> = {
+  heading: 'Write to Me',
+  items: ['Hiring, or have a question about a project? Send me an email and I’ll write back.'],
+}
+
+export const findMeOnline: Group<Link> = { heading: 'Find Me Online', items: [linkedin, github, cvLink] }

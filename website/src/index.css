@@ -15,3 +15,37 @@
   border: 0 !important;
   white-space: nowrap !important;
 }
+
+.skip-link {
+  position: fixed;
+  inset: 0 auto auto 0;
+  padding: 0.75rem 1rem;
+  background: Canvas;
+}
+
+/* Without popover the list is always shown, so it needs no button */
+@supports not selector(:popover-open) {
+  .menu-button {
+    display: none;
+  }
+}
+
+@media (width >= 48rem) {
+  .menu-button {
+    display: none;
+  }
+
+  /* Wide enough for the links: undo the browser's popover styles and show the list in place */
+  .section-menu {
+    display: flex;
+    gap: 1rem;
+    position: static;
+    inline-size: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    list-style: none;
+  }
+}

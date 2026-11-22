@@ -67,20 +67,20 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Description:** Add `about` data (an intro paragraph and Education entries from the CV) and `About.tsx` with Who I Am and Education. Add `Contact.tsx` with Write to Me and Find Me Online. Add header nav links to `#about`, `#projects`, `#experience`, `#skills`, `#credentials` and `#contact`.
 
 **Acceptance criteria:**
-- [ ] About renders first and Contact last, each with both subsections
-- [ ] Contact has LinkedIn, GitHub and CV links, and an email link to the CV's address
-- [ ] Each nav link jumps to its section, and sections not built yet are left out of the nav
-- [ ] The intro is a draft marked `TODO` for Seanrei to edit
-- [ ] A skip link goes to the main content, and the section nav has its own name
+- [x] About renders first and Contact last, each with both subsections
+- [x] Contact has LinkedIn, GitHub and CV links, and an email link to the CV's address
+- [x] Each nav link jumps to its section, and sections not built yet are left out of the nav
+- [x] The intro is a draft marked `TODO` for Seanrei to edit
+- [x] A skip link goes to the main content, and the section nav has its own name
 - [ ] The hero photo has alt text, `width`, `height` and `fetchpriority="high"`, and isn't lazy-loaded. Hidden until Seanrei OKs a file.
-- [ ] On phones the nav is a button that opens a native popover (`Nav/Menu`). Where popover is missing, the links show.
+- [x] On phones the nav is a button that opens a native popover (`Nav/Menu`). Where popover is missing, the links show.
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: click every nav link, and open and close the mobile menu with the keyboard
+- [x] `npm run build` passes
+- [x] Manual: click every nav link, and open and close the mobile menu with the keyboard
 
 **Dependencies:** T3. The photo needs spec Open Question 10.
-**Files:** `src/content.ts`, `src/components/Header.tsx`, `src/sections/About.tsx`, `src/sections/Contact.tsx`, `src/App.tsx`, `src/index.css`
+**Files:** `src/content.ts`, `src/components/Header.tsx`, `src/sections/About.tsx`, `src/sections/Contact.tsx`, `src/App.tsx`, `src/main.tsx`, `src/index.css`
 **Scope:** M
 
 ### T5: Experience section
@@ -90,13 +90,14 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [ ] Two `h3` subsections. Entries show role, org, dates and bullets.
 - [ ] The OJT entry has a working certificate link
 - [ ] Matches the CV's Experience and Leadership sections
+- [ ] Its nav link is added to `Header.tsx`
 
 **Verification:**
 - [ ] `npm run build` passes
 - [ ] Manual: open the OJT PDF
 
 **Dependencies:** T3
-**Files:** `src/content.ts`, `src/sections/Experience.tsx`, `src/App.tsx`
+**Files:** `src/content.ts`, `src/sections/Experience.tsx`, `src/App.tsx`, `src/components/Header.tsx`
 **Scope:** S
 
 ### T6: Skills section
@@ -106,13 +107,14 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [ ] Eight `h3` subsections in that order
 - [ ] Every skill in "Skills shown" appears exactly once
 - [ ] Each sticker list has `role="list"`
+- [ ] Its nav link is added to `Header.tsx`
 
 **Verification:**
 - [ ] `npm run build` passes
 - [ ] Manual: compare against "Skills shown"
 
 **Dependencies:** T3
-**Files:** `src/content.ts`, `src/sections/Skills.tsx`, `src/App.tsx`
+**Files:** `src/content.ts`, `src/sections/Skills.tsx`, `src/App.tsx`, `src/components/Header.tsx`
 **Scope:** S
 
 ### T7: Hand-listed Credentials subsections
