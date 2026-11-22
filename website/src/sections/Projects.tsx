@@ -1,4 +1,20 @@
+import type { Project } from '../content.ts'
 import { projects } from '../content.ts'
+
+function Print({ project: { title, image } }: { project: Project }) {
+  const heading = <h4>{title}</h4>
+  if (!image) return heading
+  const { caption, ...img } = image
+  return (
+    <>
+      <figure className="print">
+        <img {...img} loading="lazy" />
+        <figcaption>{caption ? <p className="serif">{caption}</p> : heading}</figcaption>
+      </figure>
+      {caption && heading}
+    </>
+  )
+}
 
 export function Projects() {
   return (
@@ -9,7 +25,7 @@ export function Projects() {
           <h3>{g.heading}</h3>
           {g.items.map((p) => (
             <article key={p.title} className={`project ${p.size ?? ''}`}>
-              <h4>{p.title}</h4>
+              <Print project={p} />
               <p className={p.size && 'lead'}>{p.summary}</p>
               <p className="small">{p.stack.join(', ')}. {p.dates}</p>
               <div className="links">

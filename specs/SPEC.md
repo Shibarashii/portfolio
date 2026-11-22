@@ -67,7 +67,7 @@ The last three were listed as web applications before this revision. They are Wi
 - Projects are cards with real screenshots where there are any. The layout is `Card/Project large` and `Card/Project small` in Figma.
 - Two or three projects are large and the rest are small.
 - Details open on this page, and are also the full record for writing the CV.
-- A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). ESPA and Hitboxd have no screenshots yet.
+- A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). ESPA and Hitboxd have no screenshots yet, so they show text only. On phones the desktop apps' prints are full width, not Figma's 120px thumbnails, so they can be read.
 - Screenshots live in `src/screenshots/` and are imported, so a missing one fails the build. Each has alt text, `width` and `height`, and loads lazily unless it shows on the first screen.
 - **Privacy:** Seanrei checks each screenshot at full size before it ships. No real names, emails or addresses.
 
@@ -135,10 +135,11 @@ Every section uses one shape, a list of subsections:
 ```ts
 export type Group<T> = { heading: string; items: T[] }
 
+export type Image = { src: string; alt: string; width: number; height: number; caption?: string }
 export type Project = {
   title: string; summary: string; stack: string[]; dates: string
   repo?: string; link?: string
-  // Image fields are added in T9
+  image?: Image           // a Print. Without a caption, the title is the caption
   built: string[]         // inside Details
   size?: 'xl' | 'large'   // title size and buttons, small when left out
 }
@@ -256,8 +257,8 @@ Before T3:
 5. **Job title** for the top of the page. Decided 2026-11-22: "Computer Science graduate specializing in full-stack development and AI/ML", since Seanrei has no job yet.
 
 Before T9:
-6. **Retake the Barangay and Community Feedback screenshots** with neutral data? Barangay's use joke entries with celebrity names and show what look like officials' names. The feedback inbox shows Gmail addresses. Default: Barangay shows no screenshot, and Community Feedback uses its dashboard screen.
-7. **Copying screenshots into this repo.** PC Flipper's are in the local clone. The others need downloading, which needs Seanrei's OK on a file list.
+6. **Barangay and Community Feedback screenshots.** Decided 2026-11-22: Barangay uses its Document page, with the officials' names covered by a solid fill. Community Feedback uses its dashboard, since the inbox shows Gmail addresses. Task Management uses its dashboard.
+7. **Copying screenshots into this repo.** Decided 2026-11-22: PC Flipper's landing page (a screenshot from Seanrei, instead of Figma's `light-and-dark.png`), DAMA's `screenshot-sample-detection.png` (cropped), Task Management's `02-dashboard.png`, Community Feedback's `01-dashboard-section.png` and Barangay's `04-document-page.png`, saved as WebP. DAMA shows its screenshot instead of Figma's drawing. Seanrei signed off the Nail figure.
 
 Before T6:
 8. **Adding the 41 skill logos to this repo.** Decided 2026-11-22: approved and added in T6.

@@ -4,6 +4,12 @@ import introToGithubPdf from '../../accomplishments/Introduction to Github.pdf?u
 import topcit from '../../accomplishments/TOPCIT Certificate.pdf?url'
 import itsCertificate from '../../certifications/ITS Software Development/ITS Software Development Certification.pdf?url'
 import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
+import nailFigure from './figures/nail-feature-classifier.svg'
+import barangayShot from './screenshots/barangay-clearance-system.webp'
+import feedbackShot from './screenshots/community-feedback-system.webp'
+import damaShot from './screenshots/dama-braille-converter.webp'
+import pcFlipperShot from './screenshots/pc-flipper-toolkit.webp'
+import taskShot from './screenshots/task-management-system.webp'
 import type { Completion } from './completions.ts'
 import * as logos from './logos/index.ts'
 
@@ -12,6 +18,9 @@ export type Group<T> = { heading: string; items: T[] }
 export type School = { school: string; degree: string; years: string }
 
 export type Link = { label: string; url: string }
+
+// Without a caption, the project's title is the caption
+export type Image = { src: string; alt: string; width: number; height: number; caption?: string }
 
 export type Project = {
   title: string
@@ -22,6 +31,7 @@ export type Project = {
   link?: string
   built: string[]
   size?: 'xl' | 'large' // Title size and buttons. Small when left out.
+  image?: Image
 }
 
 // color is a class in index.css. Leaf when left out.
@@ -76,6 +86,13 @@ export const projects: Group<Project>[] = [
         dates: '2026',
         repo: 'https://github.com/Shibarashii/pc-flipper-toolkit',
         link: 'https://pc-flipper-toolkit.vercel.app',
+        image: {
+          src: pcFlipperShot,
+          alt: 'The landing page, headed “Track your profit on every PC you flip,” beside a diagram of a PC case with prices on its parts and a profit of ₱4,200.',
+          width: 1389,
+          height: 865,
+          caption: 'The landing page',
+        },
         built: [
           'Tracks each build from planning to sold: its parts, bundles and extra costs, with the profit and margin as they add up.',
           'Searches the EasyPC and PC Express catalogues while you edit a part, and fills in the price and shop you pick.',
@@ -117,6 +134,13 @@ export const projects: Group<Project>[] = [
         stack: ['Python', 'PyTorch', 'Grad-CAM'],
         dates: 'Sep to Nov 2025',
         repo: 'https://github.com/Shibarashii/nail-feature-classifier',
+        image: {
+          src: nailFigure,
+          alt: 'Drawing of three fingertips, each with a heat spot on the nail that marks where the model looks.',
+          width: 560,
+          height: 360,
+          caption: 'Where the model looks (illustration)',
+        },
         built: [
           'Implemented configurable model factories and training strategies, including baseline, from-scratch, full fine-tuning, and gradual layer unfreezing.',
           'Built evaluation, model-comparison, Grad-CAM interpretability, and reproducibility tools to assess performance and visualize relevant nail-image features.',
@@ -129,6 +153,13 @@ export const projects: Group<Project>[] = [
         stack: ['Python', 'YOLO', 'Flask', 'OpenCV', 'LLM'],
         dates: 'Dec 2025',
         repo: 'https://github.com/Shibarashii/DAMA-Filipino-Braille-Converter',
+        image: {
+          src: damaShot,
+          alt: 'A photo of braille with a labeled box around each detected cell, next to the text it was converted to, which begins “all human beings are born free and equal in dignity and rights.”',
+          width: 1220,
+          height: 634,
+          caption: 'Detected cells and the converted text',
+        },
         built: [
           'Developed a YOLO-based OCR system that detects Filipino and English Grade 1 Braille characters and converts them into structured text using LLM-assisted processing.',
           'Integrated the Braille detection model with Flask to provide image-based Braille recognition and text conversion.',
@@ -146,6 +177,12 @@ export const projects: Group<Project>[] = [
         stack: ['C#', '.NET', 'Windows Forms', 'SQLite'],
         dates: 'Dec 2024',
         repo: 'https://github.com/Shibarashii/automated-barangay-clearance-system',
+        image: {
+          src: barangayShot,
+          alt: 'The Document page: a form filled in with sample details, next to a print preview of the barangay clearance it makes.',
+          width: 1100,
+          height: 617,
+        },
         built: [
           'Led full-stack development of a password-protected desktop application that automated barangay clearance generation by syncing citizen data from Google Forms and Google Sheets.',
           'Implemented SQLite-based offline storage, smart multi-field search, approval workflows, date-filtered records history, real-time document previews, PDF printing, and .xlsx export using ClosedXML.',
@@ -158,6 +195,12 @@ export const projects: Group<Project>[] = [
         stack: ['C#', '.NET', 'Windows Forms', 'MySQL', 'SendGrid'],
         dates: 'Dec 2023',
         repo: 'https://github.com/Shibarashii/task-management-system',
+        image: {
+          src: taskShot,
+          alt: 'The admin dashboard: 2 of 6 projects and 8 of 15 tasks finished, and a table of projects with their progress, dates and status.',
+          width: 1100,
+          height: 594,
+        },
         built: [
           'Built and maintained the backend, authoring the database schema and SQL deployment scripts for reproducible environment setup.',
           'Implemented core business logic and data integrity features: automated project progress and deadline-driven status updates, role-based access control, and a soft-delete cascade to prevent orphaned records.',
@@ -170,6 +213,12 @@ export const projects: Group<Project>[] = [
         stack: ['C#', '.NET', 'Windows Forms', 'MySQL'],
         dates: 'Dec 2023',
         repo: 'https://github.com/Shibarashii/community-suggestion-and-feedback-system',
+        image: {
+          src: feedbackShot,
+          alt: 'The admin dashboard, with counts of total mail, mail received today, unread mail and spam.',
+          width: 1100,
+          height: 615,
+        },
         built: [
           'Developed and maintained the backend architecture and database schema, implementing secure admin authentication, mail lifecycle operations (inbox, starred, spam, trash), and dashboard queries to surface key metrics.',
           'Designed and implemented a simple keyword-based spam detection system and blacklist management that loads spam words from the database and uses regex word-boundary matching across email, subject, and body to compute a spam score and flag submissions; included admin controls to manage the blacklist and restore false positives.',

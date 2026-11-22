@@ -30,6 +30,7 @@
   --color-on-button: #ffffff;
   --color-on-band: #ffffff;
   --color-on-skills: #17351f;
+  --color-on-print: #17351f;
   --color-stack: #a9cb95;
   --color-shadow: rgb(13 46 23 / 0.22);
   --color-shadow-lifted: rgb(13 46 23 / 0.34);
@@ -301,13 +302,16 @@ main:focus-visible {
 }
 
 :is(article:hover, article:focus-within) > .print {
-  rotate: 0deg;
   box-shadow: var(--shadow-lifted);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .print {
     transition: rotate 220ms, box-shadow 220ms;
+  }
+
+  :is(article:hover, article:focus-within) > .print {
+    rotate: 0deg;
   }
 }
 
@@ -573,7 +577,7 @@ header {
   }
 }
 
-/* Projects. The images come with T9, which also places the large cards beside their prints. */
+/* Projects */
 #projects {
   gap: 0;
   padding: 0;
@@ -632,6 +636,52 @@ header {
 
 .project > p {
   max-inline-size: 42rem;
+}
+
+.project .print {
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+  margin-block-end: 1rem;
+  padding: 0.75rem;
+}
+
+.project img {
+  inline-size: 100%;
+  block-size: auto;
+}
+
+figcaption {
+  font-size: var(--caption-print);
+  color: var(--color-on-print);
+}
+
+figcaption > * {
+  font-size: inherit !important;
+  line-height: 1.25;
+}
+
+/* Prints of one row line up, whatever the length of their captions */
+#projects .band .project {
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+}
+
+#projects .band img {
+  block-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+}
+
+#projects .band .project:nth-of-type(even) .print {
+  rotate: -1.2deg;
+}
+
+/* Figma keeps the large prints straight on phones */
+@media (width < 48rem) {
+  :is(.xl, .large) .print {
+    rotate: 0deg;
+  }
 }
 
 /* The links float, so Details sits on their line and its open panel takes the full width under them */
@@ -714,6 +764,55 @@ details[open] > summary .when-closed {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  :is(.xl, .large) .print {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  /* The second of a pair hangs lower */
+  .large + .large {
+    margin-block-start: 6rem;
+  }
+
+  .large .print {
+    margin-block-end: 1.75rem;
+    rotate: -1.4deg;
+  }
+
+  .large + .large .print {
+    rotate: 1.6deg;
+  }
+
+  /* The print floats, so the open Details panel can take the full width under it */
+  .xl {
+    display: flow-root;
+  }
+
+  .xl .print {
+    float: left;
+    inline-size: 62%;
+    margin-block-end: 2.5rem;
+    margin-inline-end: 4.5rem;
+  }
+
+  .xl > p {
+    max-inline-size: none;
+  }
+
+  .xl h4 {
+    padding-block-start: 10%;
+  }
+
+  .xl > :is(p, .links) {
+    margin-block-start: 0.75rem;
+  }
+
+  .xl .links {
+    display: block;
+  }
+}
+
+@media (width >= 70rem) {
   #projects > .band {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

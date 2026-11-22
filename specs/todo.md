@@ -171,14 +171,14 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Description:** Add project screenshots, and any drawn figure, as `Print`s per the `[Ready for dev]` Figma sections and the spec's "Projects: what any layout must do".
 
 **Acceptance criteria:**
-- [ ] Every project with a safe screenshot shows it
-- [ ] Seanrei has checked every screenshot at full size, and signed off any figure against its project's code
-- [ ] Images are readable in both themes and at 375px, and each has alt text
-- [ ] Screenshots load lazily, except any that show on the first screen
+- [x] Every project with a safe screenshot shows it
+- [x] Seanrei has checked every screenshot at full size, and signed off any figure against its project's code
+- [x] Images are readable in both themes and at 375px, and each has alt text
+- [x] Screenshots load lazily, except any that show on the first screen
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: check both themes at 375px and desktop widths
+- [x] `npm run build` passes
+- [x] Manual: check both themes at 375px and desktop widths
 
 **Dependencies:** T3, T8, spec Open Questions 6 and 7
 **Files:** `src/screenshots/`, `src/content.ts`, `src/sections/Projects.tsx`, `src/index.css`
