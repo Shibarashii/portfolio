@@ -1,6 +1,6 @@
 # Intent: Portfolio website sections
 
-Confirmed 2026-11-21.
+Confirmed 2026-11-21. [SPEC.md](../SPEC.md) wins where they differ: it adds Contact, and subsections replace the Projects filter and the three Skills groups.
 
 | # | Section | Holds |
 |---|---|---|

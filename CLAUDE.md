@@ -22,7 +22,9 @@ This repo holds two things: Seanrei Valdeabella's portfolio documents, and the p
 ## Website
 - Stack: React + Vite (decided 2026-11-21).
 - Design: Figma file `zS6WnE2UAjd8LnLRyVCu8D`. Read [specs/figma-workflow.md](specs/figma-workflow.md) before coding any visual design. The direction is Family album (chosen 2026-11-22). It is built in Foundations, Components and Designs, light and dark, all tagged `[Ready for dev]` (2026-11-22). `specs/intent/visual-design.md` and `specs/ideas/project-cards.md` are dropped, so don't build from them. Only build from sections tagged `[Ready for dev]`. No emojis in Figma names or copy.
-- _TBD: hosting, and dev/build/test commands. Fill this in when the site is scaffolded._
+- Hosting: GitHub Pages via GitHub Actions, at `https://shibarashii.github.io/portfolio/` (see `specs/SPEC.md`).
+- Browser support (decided 2026-11-22): newer browser features are fine if the page still works without them. No polyfills. Where popover is missing, the mobile menu falls back to plain links.
+- _TBD: dev/build/test commands. Fill this in when the site is scaffolded._
 
 ## Starting a Figma design session
 Do this before changing anything in the Figma file, so new work matches what is there.

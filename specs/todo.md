@@ -8,33 +8,34 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Description:** Create `website/` from the `react-ts` template and strip the demo content. Set `base` and `fs.allow`. Render a header with name, title, GitHub, LinkedIn and CV links, where the CV link imports `CurriculumVitae.pdf?url` from outside the root. Add the Pages workflow.
 
 **Acceptance criteria:**
-- [ ] `npm run dev` and `npm run build` both work, and the CV link opens the PDF in each
+- [x] `npm run dev` and `npm run build` both work, and the CV link opens the PDF in each
 - [ ] Pushing to `main` deploys, and `https://shibarashii.github.io/portfolio/` shows the header with working links
-- [ ] `.gitignore` covers `website/dist` and `node_modules`
+- [x] `.gitignore` covers `website/dist` and `node_modules`
 
 **Verification:**
-- [ ] `npm run build && npm run preview`, then click the CV link
-- [ ] Open the live URL after the workflow finishes (needs spec Open Question 1 answered and Pages enabled)
+- [x] `npm run build && npm run preview`, then click the CV link
+- [ ] Open the live URL after the workflow finishes (needs Pages enabled)
 
 **Dependencies:** None
-**Files:** `website/` (template), `website/vite.config.ts`, `website/src/App.tsx`, `website/src/index.css`, `.github/workflows/deploy.yml`
+**Files:** `website/` (template), `website/vite.config.ts`, `website/src/App.tsx`, `website/src/components/Header.tsx`, `website/src/index.css`, `.github/workflows/deploy.yml`
 **Scope:** M
 
 ### T2: Course completions, generated from file names
 **Description:** Write the parser `parseCompletion(path, url)` in `completions.ts` and its test. Add `Credentials.tsx`, which globs `completions/**/*.pdf` and renders a collapsed **Course Completions** `<details>` with Specializations and Courses, newest first.
 
 **Acceptance criteria:**
-- [ ] Test covers: a valid course, a valid specialization, a name with only one word after the date, a bad date, a non-PDF file, and newest-first sorting
-- [ ] The page lists all 34 PDFs (5 specializations, 29 courses), each linking to its PDF
-- [ ] A badly named file is skipped with a `console.warn`, and the build doesn't fail
+- [x] Test covers: a valid course, a valid specialization, a name with only one word after the date, a bad date, a non-PDF file, and newest-first sorting
+- [x] The page lists all 34 PDFs (5 specializations, 29 courses), each linking to its PDF
+- [x] A badly named file is skipped with a `console.warn`, and the build doesn't fail
+- [x] Sections render inside one `<main>`, the Course Completions `h3` is outside the `<summary>`, and unstyled lists have `role="list"`
 
 **Verification:**
-- [ ] `npm test` passes
-- [ ] `npm run build` passes
-- [ ] Manual: count the entries and open 3 links, including one with spaces in its name
+- [x] `npm test` passes
+- [x] `npm run build` passes
+- [x] Manual: count the entries and open 3 links, including one with spaces in its name
 
 **Dependencies:** T1
-**Files:** `src/completions.ts`, `src/completions.test.ts`, `src/sections/Credentials.tsx`, `src/App.tsx`, `package.json` (test script)
+**Files:** `src/completions.ts`, `src/completions.test.ts`, `src/sections/Credentials.tsx`, `src/App.tsx`, `package.json` (test script), `tsconfig.app.json`, `tsconfig.node.json`
 **Scope:** M
 
 ## Checkpoint A
@@ -50,6 +51,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Acceptance criteria:**
 - [ ] Web Applications, Machine Learning and Desktop Applications render as `h3` subsections. Each card has a title, a summary, stack, dates, links and details that open on this page.
 - [ ] Hardware & Homelab is not rendered while it's empty
+- [ ] No two links with the same name go to different places, via a `visually-hidden` class in `index.css`
 - [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. ESPA has no source link, and its wording is approved by Seanrei.
 
 **Verification:**
@@ -58,7 +60,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [ ] Manual: all 7 source links and the PC Flipper live link open without being logged in to GitHub
 
 **Dependencies:** T1
-**Files:** `src/content.ts`, `src/sections/Projects.tsx`, `src/App.tsx`
+**Files:** `src/content.ts`, `src/sections/Projects.tsx`, `src/App.tsx`, `src/index.css`
 **Scope:** S
 
 ### T4: About and Contact sections + section nav
@@ -69,14 +71,17 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [ ] Contact has LinkedIn, GitHub and CV links, and an email link to the CV's address
 - [ ] Each nav link jumps to its section, and sections not built yet are left out of the nav
 - [ ] The intro is a draft marked `TODO` for Seanrei to edit
+- [ ] A skip link goes to the main content, and the section nav has its own name
+- [ ] The hero photo has alt text, `width`, `height` and `fetchpriority="high"`, and isn't lazy-loaded. Hidden until Seanrei OKs a file.
+- [ ] On phones the nav is a button that opens a native popover (`Nav/Menu`). Where popover is missing, the links show.
 
 **Verification:**
 - [ ] `npm run build` passes
-- [ ] Manual: click every nav link
+- [ ] Manual: click every nav link, and open and close the mobile menu with the keyboard
 
-**Dependencies:** T3
-**Files:** `src/content.ts`, `src/sections/About.tsx`, `src/sections/Contact.tsx`, `src/App.tsx`
-**Scope:** S
+**Dependencies:** T3. The photo needs spec Open Question 10.
+**Files:** `src/content.ts`, `src/components/Header.tsx`, `src/sections/About.tsx`, `src/sections/Contact.tsx`, `src/App.tsx`, `src/index.css`
+**Scope:** M
 
 ### T5: Experience section
 **Description:** Add `experience` data (Work & Internships and Leadership from the CV) and `Experience.tsx`. The DOST OJT entry links its certificate PDF.
@@ -100,6 +105,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Acceptance criteria:**
 - [ ] Eight `h3` subsections in that order
 - [ ] Every skill in "Skills shown" appears exactly once
+- [ ] Each sticker list has `role="list"`
 
 **Verification:**
 - [ ] `npm run build` passes
@@ -138,12 +144,16 @@ Also append the hand-listed Introduction to Github entry to Courses.
 ## Phase 3: Polish
 
 ### T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95
-**Description:** Finish `index.css`: a readable max width, the settled look, self-hosted fonts, light and dark themes via `prefers-color-scheme`, and visible `:focus-visible` styles. Fill in the Website commands in CLAUDE.md.
+**Description:** Finish `index.css`: a readable max width, the Family album look, self-hosted fonts, light and dark themes via `prefers-color-scheme`, and visible `:focus-visible` styles. Fill in the Website commands in CLAUDE.md.
 
 **Acceptance criteria:**
 - [ ] No horizontal scroll at 375px. Cards stack on phones.
 - [ ] Follows the spec's "Visual design" rules, from `[Ready for dev]` Figma sections only
 - [ ] Lighthouse Accessibility ≥ 95 on the live URL
+- [ ] Dark mode switches the `--color-*` variables with `prefers-color-scheme`
+- [ ] Prints tilt with the `rotate` property, and hover sets `rotate: 0deg`. No transitions under `prefers-reduced-motion: reduce`.
+- [ ] Focus rings use `outline`, with at least 3:1 contrast
+- [ ] Text set in a web font has `font-size-adjust: from-font`
 - [ ] CLAUDE.md "Website" lists hosting and the dev/build/test commands
 
 **Verification:**
@@ -156,12 +166,13 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Scope:** S
 
 ### T9: Project images
-**Description:** Add project screenshots, and any drawn figure, per `[Ready for dev]` Figma sections and the spec's "Projects: what any layout must do". Rewrite this task once the new look is settled.
+**Description:** Add project screenshots, and any drawn figure, as `Print`s per the `[Ready for dev]` Figma sections and the spec's "Projects: what any layout must do".
 
 **Acceptance criteria:**
 - [ ] Every project with a safe screenshot shows it
 - [ ] Seanrei has checked every screenshot at full size, and signed off any figure against its project's code
 - [ ] Images are readable in both themes and at 375px, and each has alt text
+- [ ] Screenshots load lazily, except any that show on the first screen
 
 **Verification:**
 - [ ] `npm run build` passes

@@ -1,6 +1,6 @@
 # Spec: Portfolio Website
 
-Status: approved 2026-11-21. Revised 2026-11-22 (8 projects, screenshots, visual design reopened): revision awaiting approval. Intent: [portfolio-sections](intent/portfolio-sections.md). The visual direction is Family album (see Visual design). Where this spec and the sections intent differ, this spec wins: subsections replace the Projects filter and the three Skills groups.
+Status: approved 2026-11-21. Revision (8 projects, screenshots, Family album look) approved 2026-11-22. Intent: [portfolio-sections](intent/portfolio-sections.md). The visual direction is Family album (see Visual design). Where this spec and the sections intent differ, this spec wins: subsections replace the Projects filter and the three Skills groups.
 
 ## Objective
 A single-page portfolio site that:
@@ -26,7 +26,7 @@ The subsection headings below are the defaults. They live in `content.ts`, so re
 - **Contact** is the last section of the page, not a separate page. It has links, not a form: a form on a static host would need an outside service.
 - **Empty subsections** are not rendered. For example, Hardware & Homelab stays hidden until it has a project.
 - **Credentials entries without a PDF** render as a card with no link. Civil Service eligibility is one of these.
-- **Course Completions** is collapsed by default in a `<details>` element, split into Specializations and Courses, newest first. **It's generated from the file names in `completions/`**, never typed by hand.
+- **Course Completions** is collapsed by default in a `<details>` element (its `h3` sits outside the `<summary>`), split into Specializations and Courses, newest first. **It's generated from the file names in `completions/`**, never typed by hand.
 
 ### Skills shown
 Regrouped 2026-11-22. This list replaces the CV's Technical Skills. Each skill appears once.
@@ -63,11 +63,11 @@ These 8 are the full list, in this order. Facts come from each repo, checked on 
 The last three were listed as web applications before this revision. They are Windows Forms apps.
 
 ### Projects: what any layout must do
-- Projects are cards with real screenshots where there are any. The card layout is open.
+- Projects are cards with real screenshots where there are any. The layout is `Card/Project large` and `Card/Project small` in Figma.
 - Two or three projects are large and the rest are small.
 - Details open on this page, and are also the full record for writing the CV.
 - A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). ESPA and Hitboxd have no screenshots yet.
-- Screenshots live in `src/screenshots/` and are imported, so a missing one fails the build. Each has alt text, `width` and `height`, and loads lazily.
+- Screenshots live in `src/screenshots/` and are imported, so a missing one fails the build. Each has alt text, `width` and `height`, and loads lazily unless it shows on the first screen.
 - **Privacy:** Seanrei checks each screenshot at full size before it ships. No real names, emails or addresses.
 
 ### Visual design
@@ -92,7 +92,7 @@ The last three were listed as web applications before this revision. They are Wi
 - React 19 + TypeScript + Vite (the `react-ts` template). Node 24 / npm 12.
 - Plain CSS in one file. Light and dark themes via `prefers-color-scheme`.
 - No router, no UI library, no Markdown renderer, no test framework.
-- Hosting: GitHub Pages via GitHub Actions, at `https://shibarashii.github.io/portfolio/` (Vite `base: '/portfolio/'`). The repo will be public, which Seanrei accepted on 2026-11-21. The certificates are already public on LinkedIn.
+- Hosting: GitHub Pages via GitHub Actions, at `https://shibarashii.github.io/portfolio/` (Vite `base: '/portfolio/'`). The repo is public, which Seanrei accepted on 2026-11-21. The certificates are already public on LinkedIn.
 
 ## Commands
 All of these run from `website/`:
@@ -118,9 +118,10 @@ portfolio/
         ├── main.tsx, App.tsx      ← App renders the six sections in order
         ├── index.css              ← all styles
         ├── content.ts             ← hand-written data, every section as Group[]
+        ├── components/            ← Figma components and anything used in more than one place (Header.tsx)
         ├── completions.ts         ← pure file-name parser (no Vite APIs, so Node can test it)
         ├── completions.test.ts    ← test for the name parser
-        ├── figures/               ← drawn SVG figures, if the new look uses any
+        ├── figures/               ← drawn SVG figures, only where a screenshot can't show the work
         ├── screenshots/           ← project screenshots
         ├── fonts/                 ← woff2 files
         ├── logos/                 ← skill logos (sources in "Skills shown")
@@ -135,7 +136,7 @@ export type Group<T> = { heading: string; items: T[] }
 export type Project = {
   title: string; summary: string; stack: string[]; dates: string
   repo?: string; link?: string
-  // Image fields are added when the new look is settled
+  // Image fields are added in T9
   built: string[]         // inside Details
 }
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
@@ -175,7 +176,7 @@ export function Projects() {
     <section id="projects" aria-labelledby="projects-h">
       <h2 id="projects-h">Projects</h2>
       {projects.filter((g) => g.items.length).map((g) => (
-        <section key={g.heading} aria-label={g.heading}>
+        <section key={g.heading}>
           <h3>{g.heading}</h3>
           {g.items.map((p) => (
             <article key={p.title} className="entry">
@@ -184,7 +185,7 @@ export function Projects() {
               <dl>
                 <dt>Stack</dt><dd>{p.stack.join(', ')}</dd>
                 <dt>Dates</dt><dd>{p.dates}</dd>
-                {p.repo && <><dt>Source</dt><dd><a href={p.repo}>GitHub</a></dd></>}
+                {p.repo && <><dt>Source</dt><dd><a href={p.repo}>GitHub<span className="visually-hidden"> source of {p.title}</span></a></dd></>}
               </dl>
               <details>
                 <summary>Details of {p.title}</summary>
@@ -200,6 +201,9 @@ export function Projects() {
 ```
 - Files are `PascalCase.tsx` for components and `camelCase.ts` for logic and data. Imports keep the `.ts`/`.tsx` extension (Node runs the tests on the same files).
 - Use semantic HTML (`section`, `h2`/`h3`, `ul`, `details`, `a`) before ARIA, and native elements before custom widgets.
+- All six sections sit in one `<main>`. Only they are labelled, since a label makes a `section` a landmark. Subsections have just their `h3`.
+- Links that go to different places have different names. Add visually hidden text where the visible text repeats.
+- A list outside `nav` that loses its bullets or becomes flex or grid needs `role="list"`, because Safari stops announcing it as a list.
 
 ## Testing Strategy
 - **Unit:** `completions.test.ts` checks the file name parser with `node:test` + `node:assert`. It runs on Node 24's native TypeScript support, with no extra dependency. Cases:
@@ -252,7 +256,7 @@ Before T3:
 2. **ESPA is a private repo**, so a source link would be a dead end for recruiters. Default: list it with no source link. Seanrei approves the summary and stack wording, since it describes private work. The spec holds none of its details.
 3. **Hitboxd's README only says "Hello."** Anyone who follows the source link lands there. Default: list it, and Seanrei writes the README before launch.
 4. **DAMA:** the link is Seanrei's fork, as asked. The CV links the original repo. The CV says YOLOv8, but `braille_app/app.py` loads YOLOv11s, so the site says "YOLO" until Seanrei confirms.
-5. **Job title** for the top of the page.
+5. **Job title** for the top of the page. Decided 2026-11-22: "Computer Science graduate specializing in full-stack development and AI/ML", since Seanrei has no job yet.
 
 Before T9:
 6. **Retake the Barangay and Community Feedback screenshots** with neutral data? Barangay's use joke entries with celebrity names and show what look like officials' names. The feedback inbox shows Gmail addresses. Default: Barangay shows no screenshot, and Community Feedback uses its dashboard screen.
@@ -261,5 +265,10 @@ Before T9:
 Before T6:
 8. **Adding the 41 skill logos to this repo** needs Seanrei's OK. So far they are approved for Figma only.
 9. **The CV lists fewer skills than the site.** 15 of the skills added 2026-11-22 aren't on the CV, and the CV's "SQL (Postgres)" is two entries here: SQL and PostgreSQL. Decided 2026-11-22: leave the CV as it is for now.
+
+Before T4:
+10. **Hero photo.** Decided 2026-11-22: T4 adds it, with `fetchpriority="high"` and no lazy loading. Still open: which photo. Using one needs Seanrei's OK for that file.
+11. **Mobile menu.** Decided 2026-11-22: T4 builds `Nav/Menu` with the browser's built-in popover.
+12. **Browser support policy.** Decided 2026-11-22: no polyfills, and plain links where popover is missing. The policy is in CLAUDE.md.
 
 Before the first deploy, Seanrei turns on Pages: repo Settings → Pages → Source: GitHub Actions.

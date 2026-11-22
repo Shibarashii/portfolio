@@ -1,6 +1,6 @@
 # Implementation Plan: Portfolio Website
 
-Spec: [SPEC.md](SPEC.md) (approved 2026-11-21). Tasks: [todo.md](todo.md). This plan lives in `specs/`, not `tasks/`, per CLAUDE.md.
+Spec: [SPEC.md](SPEC.md) (approved 2026-11-21, revision approved 2026-11-22). Tasks: [todo.md](todo.md). This plan lives in `specs/`, not `tasks/`, per CLAUDE.md.
 
 ## Overview
 A one-page React + TS + Vite site in `website/`, deployed to GitHub Pages. The riskiest parts are bundling PDFs from outside the Vite root and the `/portfolio/` base path on Pages, so they go first. After that, each task adds one section end to end (data → component → visible on the page).
@@ -10,7 +10,7 @@ A one-page React + TS + Vite site in `website/`, deployed to GitHub Pages. The r
 - **One data shape:** every section is a `Group<T>[]` in `content.ts`. Subsection headings are data, not code.
 - **PDFs are imported, not copied.** Explicit `?url` imports make a missing PDF fail the build.
 - **Deploy in Task 1.** A wrong `base` path or a broken asset URL shows up on day one, not at the end.
-- **Template dependencies are the approved stack** (react, react-dom, vite, typescript, eslint). Anything beyond `npm create vite` output needs asking first.
+- **Template dependencies are the approved stack** (react, react-dom, vite, typescript, oxlint). Anything beyond `npm create vite` output needs asking first.
 
 ## Dependency Graph
 ```
@@ -26,7 +26,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 ## Task List
 ### Phase 1: Foundation (risky parts first)
 - [ ] T1: Scaffold the Vite app with a header and CV link, and deploy it to Pages
-- [ ] T2: Course completions, generated from file names
+- [x] T2: Course completions, generated from file names
 
 ### Checkpoint A
 - [ ] `npm test` and `npm run build` pass
@@ -45,7 +45,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 - [ ] Human review of the content wording
 
 ### Phase 3: Polish
-- [ ] T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95 (waits for `[Ready for dev]` designs)
+- [ ] T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95 (designs are `[Ready for dev]`)
 - [ ] T9: Project images
 
 ### Checkpoint C: Complete
@@ -57,7 +57,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 | Vite won't serve or bundle PDFs outside `website/` | High | `server.fs.allow: ['..']`. T1 tests it with the CV link before anything else depends on it. |
 | Wrong `base` path breaks assets on Pages | High | `base: '/portfolio/'`, checked on the live URL in T1 |
 | Node can't run the parser test (TS syntax, `.ts` imports) | Med | Parser uses erasable TS only (no enums), and imports keep `.ts` extensions |
-| The first push publishes the CV's phone number and email | High | The repo is already public. Seanrei decides spec Open Question 1 before T1 pushes anything. |
+| The first push publishes the CV's personal details | High | Decided 2026-11-22 (spec Open Question 1): the phone number is out of the CV and git history, and the email stays public. |
 | Pages isn't turned on | Med | Seanrei sets Pages Source to GitHub Actions before T1's deploy check |
 | A drawn figure shows something the project doesn't do | Med | Draw from the code, and Seanrei signs off each one (T9) |
 | A screenshot shows someone's personal data | High | Seanrei checks each one at full size before it ships (T9). No screenshot until then. |
