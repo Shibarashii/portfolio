@@ -27,7 +27,10 @@ The subsection headings below are the defaults. They live in `content.ts`, so re
 - **Empty subsections** are not rendered. For example, Hardware & Homelab stays hidden until it has a project.
 - **Credentials entries without a PDF** render as a card with no link. Civil Service eligibility is one of these.
 - **Awards & Recognition** lists the Research Congress certificate and the awards in the CV's Education section (decided 2026-11-22).
-- **Course Completions** is collapsed by default in a `<details>` element (its `h3` sits outside the `<summary>`), split into Specializations and Courses, newest first. **It's generated from the file names in `completions/`**, never typed by hand.
+- **Course Completions** is split into Specializations and Courses, newest first. Specializations are always-visible cards. Courses are cards inside a `<details>` element, collapsed by default (decided 2026-11-22; Figma `Card/Course`).
+- **Certificate previews** (decided 2026-11-22): each certificate shows the first page of its PDF in a Letter-shaped frame, uncropped. TOPCIT gets a placeholder and keeps its PDF link, since its first page shows a photo, birth date and score. They are drawn at build time by `pdfPreviews` in `vite.config.ts`, from `import x from 'y.pdf?preview=560'`, and never committed. Only imported PDFs are drawn, so don't import TOPCIT or a score report this way. A new PDF in `completions/` gets its preview with no code change. The build needs `pdftoppm` (poppler-utils) and fails without it. Seanrei OK'd installing it in the GitHub build on 2026-11-22.
+- **Placeholders** (option B, decided 2026-11-22): a project with no picture shows `Art/App window` in its print, and a credential card with no preview shows `Art/Certificate`. Both are decorative. These replace the plain green cover. The drawings are SVGs exported from Figma, in `website/src/figures/`. A new project without an `image`, or a credential with a PDF and no `preview`, gets one on its own.
+- **Course Completions data:** it's generated from the file names in `completions/`, never typed by hand.
 
 ### Skills shown
 Regrouped 2026-11-22. This list replaces the CV's Technical Skills. Each skill appears once.
@@ -76,6 +79,7 @@ The last three were listed as web applications before this revision. They are Wi
 - Text meets WCAG AA (4.5:1) in light and dark themes.
 - Fonts are woff2 files served from the site, with no request to Google and no npm package.
 - No emojis.
+- Motion (chosen 2026-11-22): scroll reveal. Content fades up once as you reach it, one by one, bold. Prints then settle into their tilt and stamps land. `reveal.ts` starts it and `index.css` holds the movement, with no dependency. Nothing moves under `prefers-reduced-motion: reduce`, printing shows everything, and the first screen never fades in, so it does not load later.
 
 ### Where the existing PDFs go
 | File | Goes to |
@@ -265,7 +269,7 @@ Before T6:
 9. **The CV lists fewer skills than the site.** 15 of the skills added 2026-11-22 aren't on the CV, and the CV's "SQL (Postgres)" is two entries here: SQL and PostgreSQL. Decided 2026-11-22: leave the CV as it is for now.
 
 Before T4:
-10. **Hero photo.** Decided 2026-11-22: T4 adds it, with `fetchpriority="high"` and no lazy loading. Still open: which photo. Using one needs Seanrei's OK for that file.
+10. **Hero photo.** Decided 2026-11-22: Seanrei's graduation portrait, cropped to Figma's 440 by 500 and saved as `website/src/photo.webp`, with `fetchpriority="high"` and no lazy loading.
 11. **Mobile menu.** Decided 2026-11-22: T4 builds `Nav/Menu` with the browser's built-in popover.
 12. **Browser support policy.** Decided 2026-11-22: no polyfills, and plain links where popover is missing. The policy is in CLAUDE.md.
 

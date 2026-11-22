@@ -1,17 +1,21 @@
-import type { Project } from '../content.ts'
+import type { Image, Project } from '../content.ts'
 import { projects } from '../content.ts'
+import appWindow from '../figures/app-window.svg'
 
-function Print({ project: { title, image } }: { project: Project }) {
+const noPicture: Image = { src: appWindow, alt: '', width: 220, height: 160 }
+
+// On the green band the title is the caption
+function Print({ project: { title, image }, band }: { project: Project; band: boolean }) {
+  const { caption, ...img } = image ?? noPicture
   const heading = <h4>{title}</h4>
-  if (!image) return heading
-  const { caption, ...img } = image
+  const figcaption = caption ? <p className="serif">{caption}</p> : band && heading
+  const picture = <img {...img} loading="lazy" />
   return (
     <>
-      <figure className="print">
-        <img {...img} loading="lazy" />
-        <figcaption>{caption ? <p className="serif">{caption}</p> : heading}</figcaption>
-      </figure>
-      {caption && heading}
+      {figcaption
+        ? <figure className="print">{picture}<figcaption>{figcaption}</figcaption></figure>
+        : <div className="print">{picture}</div>}
+      {figcaption !== heading && heading}
     </>
   )
 }
@@ -20,12 +24,12 @@ export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-h">
       <h2 id="projects-h">Projects</h2>
-      {projects.filter((g) => g.items.length).map((g) => (
-        <section key={g.heading} className={g.heading === 'Desktop Applications' ? 'band' : undefined}>
+      {projects.filter((g) => g.items.length).map((g) => ({ ...g, band: g.heading === 'Desktop Applications' })).map((g) => (
+        <section key={g.heading} className={g.band ? 'band' : undefined}>
           <h3>{g.heading}</h3>
           {g.items.map((p) => (
-            <article key={p.title} className={`project ${p.size ?? ''}`}>
-              <Print project={p} />
+            <article key={p.title} className={`project ${p.size ?? (g.band ? '' : 'row')}`}>
+              <Print project={p} band={g.band} />
               <p className={p.size && 'lead'}>{p.summary}</p>
               <p className="small">{p.stack.join(', ')}. {p.dates}</p>
               <div className="links">

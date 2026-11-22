@@ -72,7 +72,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [x] Each nav link jumps to its section, and sections not built yet are left out of the nav
 - [x] The intro is a draft marked `TODO` for Seanrei to edit
 - [x] A skip link goes to the main content, and the section nav has its own name
-- [ ] The hero photo has alt text, `width`, `height` and `fetchpriority="high"`, and isn't lazy-loaded. Hidden until Seanrei OKs a file.
+- [x] The hero photo has alt text, `width`, `height` and `fetchpriority="high"`, and isn't lazy-loaded
 - [x] On phones the nav is a button that opens a native popover (`Nav/Menu`). Where popover is missing, the links show.
 
 **Verification:**
@@ -151,7 +151,7 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Acceptance criteria:**
 - [x] No horizontal scroll at 375px. Cards stack on phones.
 - [x] Follows the spec's "Visual design" rules, from `[Ready for dev]` Figma sections only
-- [ ] Lighthouse Accessibility ≥ 95 on the live URL (100 on the local build, 2026-11-22. Check again after the push.)
+- [x] Lighthouse Accessibility ≥ 95 on the live URL (100 on mobile and desktop, 2026-11-22)
 - [x] Dark mode switches the `--color-*` variables with `prefers-color-scheme`
 - [x] Prints tilt with the `rotate` property, and hover sets `rotate: 0deg`. No transitions under `prefers-reduced-motion: reduce`.
 - [x] Focus rings use `outline`, with at least 3:1 contrast
@@ -183,6 +183,47 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Dependencies:** T3, T8, spec Open Questions 6 and 7
 **Files:** `src/screenshots/`, `src/content.ts`, `src/sections/Projects.tsx`, `src/index.css`
 **Scope:** M
+
+### T10: Certificate previews and course cards
+**Description:** Show the first page of each certificate on its card, and replace the course list with `Card/Course`, per the Figma sections once they are `[Ready for dev]`. Previews are drawn from the PDFs at build time with `pdftoppm`, with no npm dependency.
+
+**Acceptance criteria:**
+- [x] Every credential with a PDF shows its first page, uncropped. TOPCIT shows a plain cover with its PDF link
+- [x] Specializations are always visible, and courses are cards inside `<details>`
+- [x] A new PDF in `completions/` gets a card and a preview with no code change
+- [x] Previews have `width` and `height` and load lazily, and each card has one link with a unique name
+- [x] Seanrei has checked the previews at full size (2026-11-22)
+
+**Verification:**
+- [x] `npm test && npm run build` passes
+- [x] Manual: check both themes at 375px and desktop widths
+
+**Dependencies:** T8, Seanrei's OK on the Figma sections
+
+### T11: Placeholders for empty cards
+**Description:** Projects with no picture (ESPA and Hitboxd today) and certificates with no preview (TOPCIT and Civil Service) get a default picture. Three options were drawn in Figma, Explorations, Round 5 (2026-11-22). Seanrei picked B: a drawn app window or certificate. It is in Components and Designs.
+
+**Acceptance criteria:**
+- [x] Seanrei has picked an option
+- [x] Seanrei has OK'd the Figma sections, and they are `[Ready for dev]`
+- [x] Small projects with no picture show the app window print beside their text, per `Card/Project small` Layout=Row and Mobile
+- [x] TOPCIT and Civil Service show the drawn certificate, and TOPCIT keeps its PDF link
+- [x] Both drawings are hidden from screen readers
+
+**Dependencies:** T10
+
+### T12: Animations
+**Description:** Scroll reveal, picked by Seanrei from a demo on 2026-11-22: fade up, plays once, one by one, bold. No dependency. Images already load lazily, so nothing is split per section.
+
+**Acceptance criteria:**
+- [x] Content fades up once on scroll, prints and stamps follow their card, and all end in their designed state
+- [x] Nothing moves under `prefers-reduced-motion: reduce`, and printing shows everything
+- [x] Section links land on their section, with nothing hidden on screen or above it, and keyboard focus never lands on something hidden
+- [x] No sideways scroll, and Lighthouse is no lower than before (97, 100, 100, 91 on mobile, 2026-11-22)
+- [x] Seanrei likes how it moves (2026-11-22)
+
+**Dependencies:** T8, T10, T11
+**Files:** `src/reveal.ts`, `src/main.tsx`, `src/index.css`
 
 ## Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site

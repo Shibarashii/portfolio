@@ -26,11 +26,12 @@ The look is Family album: photo prints, postcards, stamps and stickers on sage, 
 | Responsive values | Collection Breakpoint, modes Desktop and Mobile: `layout/gutter`, `layout/section-y`, and the font sizes behind each text style |
 | Type | Young Serif for Heading, Title and Caption styles. Hanken Grotesk for Body and Label styles |
 | Shadows | `shadow/print`, `shadow/lifted`, `shadow/sticker`, `shadow/stack` |
-| Components | Button, Link, Nav/Link, Nav/Header, Nav/Menu, Stamp, Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Course row, Details panel, Card/Contact |
+| Components | Button, Link, Nav/Link, Nav/Header, Nav/Menu, Stamp, Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Card/Course, Details panel, Card/Contact |
 
 Every frame sets its Theme and Breakpoint mode. Dark frames are copies with Theme set to Dark, and their names end in `/ Dark`.
 
 - **Pictures** go in a `Print`, through its Artwork property. Set Seanrei's photo once, as the fill of `Art/Photo of you`.
+- **No picture or preview:** use `Art/App window` for a project and `Art/Certificate` for a credential. `Card/Credential` Print=None is no longer used.
 - **Project tilt** comes from the card's Layout or Tilt property. Hover straightens a print and uses `shadow/lifted`.
 - **Adding a skill:** add it to "Skills shown" in the spec, make a 54 px `Logo/Name` component (Devicon first, then Simple Icons or LobeHub Icons, pinned to a version), and add a `Tag/Skill` in all four frames. Cycle its Tilt: Left, Right, Small left. With no logo, use letters like `Logo/SQL`. On desktop the paired groups fit 5 stickers on the left and 6 on the right.
 

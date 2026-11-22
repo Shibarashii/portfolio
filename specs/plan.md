@@ -46,7 +46,10 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 
 ### Phase 3: Polish
 - [ ] T8: Responsive layout, dark mode, focus styles, Lighthouse a11y ≥ 95 (designs are `[Ready for dev]`)
-- [ ] T9: Project images
+- [x] T9: Project images
+- [x] T10: Certificate previews and course cards
+- [x] T11: Placeholders for empty cards
+- [x] T12: Animations
 
 ### Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site

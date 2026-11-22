@@ -301,16 +301,38 @@ main:focus-visible {
   rotate: 1.2deg;
 }
 
-:is(article:hover, article:focus-within) > .print {
+:is(article:hover, article:focus-within, .photo:hover) > .print {
   box-shadow: var(--shadow-lifted);
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Set by reveal.ts once loaded, so a link to a #section opens right on it */
+  [data-loaded] {
+    scroll-behavior: smooth;
+  }
+
+  .button {
+    transition: background-color 150ms;
+  }
+
+  .course,
+  .sticker {
+    transition: translate 220ms, rotate 220ms, box-shadow 220ms;
+  }
+
+  .course:hover {
+    translate: 0 -3px;
+  }
+
+  .skills li:hover .sticker {
+    rotate: 0deg;
+  }
+
   .print {
     transition: rotate 220ms, box-shadow 220ms;
   }
 
-  :is(article:hover, article:focus-within) > .print {
+  :is(article:hover, article:focus-within, .photo:hover) > .print {
     rotate: 0deg;
   }
 }
@@ -364,7 +386,7 @@ header {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  padding-block: 0.75rem 2.5rem;
+  padding-block: 0.75rem 0;
 }
 
 .bar {
@@ -407,12 +429,35 @@ header {
 
 .intro {
   display: grid;
+  align-content: start;
   gap: 1.5rem;
   max-inline-size: 40rem;
 }
 
 .intro .lead {
   max-inline-size: 35rem;
+}
+
+/* A green band under the intro, or a print over the green panel when wide */
+.photo {
+  display: grid;
+  justify-content: center;
+  margin-block-start: 1rem;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-block: 2.125rem;
+  background: var(--color-band);
+}
+
+.photo .print {
+  gap: 0.5rem;
+  inline-size: 17.5rem;
+  padding: 0.75rem;
+  rotate: -2.5deg;
+}
+
+.photo img {
+  inline-size: 100%;
+  block-size: auto;
 }
 
 /* Without popover the list is always shown, so it needs no button */
@@ -484,7 +529,11 @@ header {
 @media (width >= 48rem) {
   header {
     gap: 7rem;
-    padding-block: 2rem 4rem;
+    padding-block: 2rem 0;
+  }
+
+  .photo {
+    margin-block-start: -3rem;
   }
 
   .menu-button {
@@ -526,8 +575,11 @@ header {
 
   /* The green panel starts 100px right of the middle */
   header {
+    grid-template-columns: clamp(34rem, 100% - 32.5rem, 40rem) minmax(0, 29.5rem);
     align-content: start;
+    column-gap: 3rem;
     min-block-size: min(50rem, 100svh);
+    padding-block-end: 4rem;
     background: linear-gradient(to right, transparent calc(50% + 100px), var(--color-band) 0);
   }
 
@@ -536,8 +588,23 @@ header {
     --link: var(--color-on-band);
   }
 
-  .intro {
-    max-inline-size: min(40rem, 50% + 100px - 2rem);
+  .bar {
+    grid-column: 1 / -1;
+  }
+
+  /* Starts 45px under the bar, not 7rem like the intro */
+  .photo {
+    align-content: start;
+    justify-content: stretch;
+    margin: -4.1875rem 0 0;
+    padding: 0;
+    background: none;
+  }
+
+  .photo .print {
+    gap: 0.75rem;
+    inline-size: auto;
+    padding: 1rem;
   }
 }
 
@@ -660,6 +727,53 @@ figcaption > * {
   line-height: 1.25;
 }
 
+/* A small card off the band: the print floats beside the text, and the open Details panel takes the full width under both */
+.row {
+  --print: 7.5rem;
+  --beside: calc(var(--print) + 1.25rem);
+
+  display: flow-root;
+}
+
+.project.row .print {
+  float: left;
+  gap: 0;
+  inline-size: var(--print);
+  margin-block: 1.5rem 1rem;
+  padding: 0.5rem;
+  rotate: -1.5deg;
+}
+
+.row + .row .print {
+  rotate: 1.5deg;
+}
+
+.row img {
+  aspect-ratio: 104 / 84;
+  object-fit: cover;
+}
+
+.row > :is(h4, p, .links) {
+  margin-inline-start: var(--beside);
+}
+
+.row > p {
+  margin-block-start: 0.25rem;
+}
+
+.row .links {
+  display: block;
+}
+
+/* Room for the open label, so it does not jump to the next line */
+.row summary {
+  min-inline-size: 7rem;
+}
+
+.row .panel {
+  margin-inline-start: calc(-1 * var(--beside));
+}
+
 /* Prints of one row line up, whatever the length of their captions */
 #projects .band .project {
   grid-row: span 4;
@@ -755,6 +869,24 @@ details[open] > summary .when-closed {
 
   .xl .panel {
     padding: 2.5rem 4rem 3rem;
+  }
+
+  .row {
+    --print: 15.25rem;
+    --beside: calc(var(--print) + 2rem);
+  }
+
+  .project.row .print {
+    margin-block-start: 0.25rem;
+    padding: 0.75rem;
+  }
+
+  .row img {
+    aspect-ratio: 220 / 160;
+  }
+
+  .row h4 {
+    padding-block-start: 1.5rem;
   }
 }
 
@@ -1038,39 +1170,15 @@ details[open] > summary .when-closed {
   line-height: 1.2;
 }
 
-.credential .print,
-.cover {
-  block-size: 6.25rem;
+.preview {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 11 / 8.5;
+  object-fit: contain;
 }
 
 .credentials > section:nth-of-type(even) .print {
   rotate: -1.2deg;
-}
-
-/* A drawn certificate: paper, border and seal */
-.paper {
-  display: grid;
-  place-items: end center;
-  padding-block-end: 12%;
-  background: var(--color-art-paper);
-  outline: 2px solid var(--color-art-leaf);
-  outline-offset: -8px;
-}
-
-.paper::after {
-  content: '';
-  inline-size: 16%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--color-art-red);
-}
-
-.cover {
-  display: grid;
-  place-items: center;
-  padding: 0.5rem;
-  border-radius: var(--radius-print);
-  text-align: center;
 }
 
 .more {
@@ -1094,8 +1202,13 @@ details[open] > summary .when-closed {
   line-height: 1.25;
 }
 
-.courses:not([open]) {
-  box-shadow: var(--shadow-print), 0 8px 0 var(--color-stack);
+.courses > section {
+  display: grid;
+  gap: 1rem;
+}
+
+.courses h4 {
+  font-size: var(--heading-group);
 }
 
 .courses summary {
@@ -1104,6 +1217,8 @@ details[open] > summary .when-closed {
   align-items: center;
   gap: 1.25rem;
   inline-size: 100%;
+  color: var(--link);
+  box-shadow: var(--shadow-print), 0 8px 0 var(--color-stack);
 }
 
 .courses summary .serif {
@@ -1116,38 +1231,43 @@ details[open] > summary .when-closed {
   text-decoration: none;
 }
 
-.courses section {
+.courses ul {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   gap: 1rem;
+}
+
+.courses details ul {
   margin-block-start: 2rem;
 }
 
-.courses h4 {
-  font-size: var(--heading-subsection);
-  color: var(--link);
-}
-
-.courses ul {
-  column-gap: 4rem;
-}
-
-.courses li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.course {
+  display: grid;
+  grid-template-columns: min(8.25rem, 45%) minmax(0, 1fr);
+  align-items: center;
   gap: 1rem;
-  break-inside: avoid;
+  block-size: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-print);
+  font-weight: 400;
+  color: var(--color-on-print);
+  background: var(--color-print);
+  box-shadow: var(--shadow-print);
 }
 
-.courses li a {
-  padding-block: 0.5rem;
-  font-size: var(--label-nav);
-  font-weight: 600;
-  color: var(--fg);
+.course:hover {
+  text-decoration: none;
+  box-shadow: var(--shadow-lifted);
 }
 
-.courses time {
-  white-space: nowrap;
+.course > div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.course .serif {
+  font-size: var(--caption-print);
+  line-height: 1.25;
 }
 
 @media (width >= 48rem) {
@@ -1159,43 +1279,34 @@ details[open] > summary .when-closed {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .credential .print,
-  .cover {
-    block-size: 13.75rem;
-  }
-
   .credential .print {
     padding: 0.75rem;
-  }
-
-  .paper {
-    outline-offset: -14px;
-  }
-
-  .cover {
-    font-size: var(--title-small);
   }
 
   .credentials {
     row-gap: 4rem;
   }
 
-  .courses {
+  .courses summary {
     padding: 2rem 2.5rem;
-  }
-
-  .courses[open] {
-    padding: 2.5rem 4rem 3rem;
   }
 
   .courses summary .serif {
     font-size: var(--title-medium);
   }
-}
 
-@media (width >= 70rem) {
   .courses ul {
-    columns: 2;
+    gap: 1.5rem;
+  }
+
+  .courses .stacked {
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  }
+
+  .stacked .course {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 0.75rem;
   }
 }
 
@@ -1280,5 +1391,81 @@ footer p {
 
   .postcard .stamp {
     position: static;
+  }
+}
+
+/* Motion. Keyframes only say where an element starts, so it always ends as styled above. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 4.375rem;
+  }
+}
+
+/* No fade, because hidden text and photos count as late for the first screen */
+@keyframes slide {
+  from {
+    translate: 0 1.25rem;
+  }
+}
+
+@keyframes land {
+  from {
+    rotate: 0deg;
+    scale: 1.05;
+  }
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    rotate: -10deg;
+    scale: 1.5;
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    translate: 0 -0.75rem;
+  }
+}
+
+/* Screen only, so printing shows everything */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .intro > *,
+  .photo .print,
+  [data-reveal],
+  [data-reveal] :is(.print, .stamp) {
+    animation: rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--wait, 0ms) backwards;
+  }
+
+  .intro > * {
+    animation-name: slide;
+  }
+
+  .photo .print,
+  [data-reveal] .print {
+    animation-name: land;
+  }
+
+  [data-reveal] .stamp {
+    animation-name: stamp;
+  }
+
+  /* These follow their card */
+  [data-reveal] :is(.print, .stamp) {
+    animation-delay: calc(var(--wait, 0ms) + 250ms);
+  }
+
+  /* reveal.ts marks what has not been scrolled to yet */
+  [data-reveal='waiting'],
+  [data-reveal='waiting'] :is(.print, .stamp) {
+    animation-play-state: paused;
+  }
+
+  details[open] > :not(summary),
+  .section-menu:popover-open {
+    animation: open 260ms ease-out;
   }
 }

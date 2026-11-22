@@ -1,20 +1,47 @@
-import { listCompletions } from '../completions.ts'
+import { listCompletions, type Completion } from '../completions.ts'
 import { credentials, introToGithub } from '../content.ts'
+import drawnCertificate from '../figures/certificate.svg'
 
 const completions = listCompletions(
   import.meta.glob<string>('../../../completions/**/*.pdf', { query: '?url', import: 'default', eager: true }),
+  {
+    ...import.meta.glob<string>('../../../completions/Specialization Certificates/*.pdf', { query: '?preview=560', import: 'default', eager: true }),
+    ...import.meta.glob<string>('../../../completions/Course Certificates/*.pdf', { query: '?preview=264', import: 'default', eager: true }),
+  },
 )
 
-const groups = [
-  { heading: 'Specializations', items: completions.filter((c) => c.kind === 'specialization') },
-  // Older than every course in completions/, so it goes last
-  { heading: 'Courses', items: [...completions.filter((c) => c.kind === 'course'), introToGithub] },
-]
+const specializations = completions.filter((c) => c.kind === 'specialization')
+// Older than every course in completions/, so it goes last
+const courses = [...completions.filter((c) => c.kind === 'course'), introToGithub]
 
 const dateFormat = new Intl.DateTimeFormat('en', { dateStyle: 'medium', timeZone: 'UTC' })
 
 function Day({ date }: { date: string }) {
   return <time dateTime={date}>{dateFormat.format(new Date(date))}</time>
+}
+
+// The frame is Letter sized, and other pages fit inside it uncropped. The title next to it says what it is.
+function Preview({ src }: { src: string }) {
+  return <img className="preview" src={src} alt="" width="280" height="216" loading="lazy" decoding="async" />
+}
+
+function Courses({ items, className }: { items: Completion[]; className?: string }) {
+  return (
+    // Safari drops list semantics once the bullets are styled away
+    <ul role="list" className={className}>
+      {items.map((c) => (
+        <li key={c.url}>
+          <a className="course" href={c.url}>
+            {c.preview && <Preview src={c.preview} />}
+            <div>
+              <p className="serif">{c.title}</p>{' '}
+              <p className="small">{c.issuer}, <Day date={c.date} /></p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export function Credentials() {
@@ -23,17 +50,15 @@ export function Credentials() {
       <h2 id="credentials-h">Credentials</h2>
       <div className="credentials">
         {credentials.filter((g) => g.items.length).map((g) => {
-          const cards = g.items.filter((c) => c.pdf || c.cover)
-          const rest = g.items.filter((c) => !c.pdf && !c.cover)
+          const cards = g.items.filter((c) => c.pdf || c.preview)
+          const rest = g.items.filter((c) => !c.pdf && !c.preview)
           return (
             <section key={g.heading}>
               <div className="group">
                 <h3>{g.heading}</h3>
                 {cards.map((c) => (
                   <article key={c.title} className="credential">
-                    {c.pdf
-                      ? <div className="print" aria-hidden="true"><div className="paper" /></div>
-                      : <div className="cover band serif" aria-hidden="true">{c.cover}</div>}
+                    <div className="print"><Preview src={c.preview ?? drawnCertificate} /></div>
                     <div>
                       <h4>{c.title}</h4>
                       <p className="small">{c.issuer}</p>
@@ -61,30 +86,23 @@ export function Credentials() {
           )
         })}
       </div>
-      <section>
+      <section className="courses">
         <h3>Course Completions</h3>
-        <details className="courses card">
-          <summary>
-            <span className="serif">{groups.map((g) => `${g.items.length} ${g.heading.toLowerCase()}`).join(' and ')}</span>
-            <span className="when-closed">Show all</span>
-            <span className="when-open">Hide</span>
-          </summary>
-          {groups.map((g) => (
-            <section key={g.heading}>
-              <h4>{g.heading}</h4>
-              {/* Safari drops list semantics once the bullets are styled away */}
-              <ul role="list">
-                {g.items.map((c) => (
-                  <li key={c.url}>
-                    {/* The issuer is in the link because two issuers share a title */}
-                    <a href={c.url}>{c.issuer} {c.title}</a>{' '}
-                    <span className="small"><Day date={c.date} /></span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </details>
+        <section>
+          <h4>Specializations</h4>
+          <Courses items={specializations} className="stacked" />
+        </section>
+        <section>
+          <h4>Courses</h4>
+          <details>
+            <summary className="card">
+              <span className="serif">{courses.length} courses</span>
+              <span className="when-closed">Show all</span>
+              <span className="when-open">Hide</span>
+            </summary>
+            <Courses items={courses} />
+          </details>
+        </section>
       </section>
     </section>
   )

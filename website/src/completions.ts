@@ -4,6 +4,7 @@ export type Completion = {
   title: string
   kind: 'course' | 'specialization'
   url: string
+  preview?: string
 }
 
 // .../Course Certificates/YYYY-MM-DD. Issuer Title.pdf
@@ -22,13 +23,13 @@ export function parseCompletion(path: string, url: string): Completion | null {
   return { date, issuer, title, kind: folder === 'Course' ? 'course' : 'specialization', url }
 }
 
-/** Newest first. Badly named files are skipped with a warning. */
-export function listCompletions(files: Record<string, string>): Completion[] {
+/** Newest first. Badly named files are skipped with a warning. Both maps are keyed by file path. */
+export function listCompletions(files: Record<string, string>, previews: Record<string, string> = {}): Completion[] {
   return Object.entries(files)
     .flatMap(([path, url]) => {
       const completion = parseCompletion(path, url)
       if (!completion) console.warn(`Skipped badly named certificate: ${path}`)
-      return completion ?? []
+      return completion ? { ...completion, preview: previews[path] } : []
     })
     .sort((a, b) => b.date.localeCompare(a.date))
 }

@@ -1,10 +1,15 @@
+import researchCongressPreview from '../../accomplishments/2026 Intercollegiate Student Research Congress.pdf?preview=560'
 import researchCongress from '../../accomplishments/2026 Intercollegiate Student Research Congress.pdf?url'
 import ojtCertificate from '../../accomplishments/DOST OJT Certificate of Completion.pdf?url'
+import introToGithubPreview from '../../accomplishments/Introduction to Github.pdf?preview=264'
 import introToGithubPdf from '../../accomplishments/Introduction to Github.pdf?url'
 import topcit from '../../accomplishments/TOPCIT Certificate.pdf?url'
+import itsPreview from '../../certifications/ITS Software Development/ITS Software Development Certification.pdf?preview=560'
 import itsCertificate from '../../certifications/ITS Software Development/ITS Software Development Certification.pdf?url'
 import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
+import drawnCertificate from './figures/certificate.svg'
 import nailFigure from './figures/nail-feature-classifier.svg'
+import photoFile from './photo.webp'
 import barangayShot from './screenshots/barangay-clearance-system.webp'
 import feedbackShot from './screenshots/community-feedback-system.webp'
 import damaShot from './screenshots/dama-braille-converter.webp'
@@ -41,14 +46,22 @@ export type Role = { role: string; org: string; start: string; end?: string; bul
 
 export type Skill = { name: string; logo?: string }
 
-// With a pdf or a cover it is a card, otherwise a line in a list. The cover text stands in for a certificate.
-export type Credential = { title: string; issuer: string; date?: string; pdf?: string; cover?: string }
+// With a PDF or a preview it is a card, otherwise a line in a list
+export type Credential = { title: string; issuer: string; date?: string; pdf?: string; preview?: string }
 
 export const email = 'seanrei.ethan23@gmail.com'
 
 export const github: Link = { label: 'GitHub', url: 'https://github.com/Shibarashii' }
 export const linkedin: Link = { label: 'LinkedIn', url: 'https://www.linkedin.com/in/seanrei-valdeabella' }
 export const cvLink: Link = { label: 'CV', url: cv }
+
+export const photo: Image = {
+  src: photoFile,
+  alt: 'Seanrei Valdeabella, smiling in a graduation cap and gown with a Laguna State Polytechnic University medal.',
+  width: 880,
+  height: 1000,
+  caption: 'LSPU, Class of 2026',
+}
 
 // TODO: draft from the CV, for Seanrei to edit
 export const whoIAm: Group<string> = {
@@ -372,7 +385,15 @@ export const skills: Group<Skill>[] = [
 export const credentials: Group<Credential>[] = [
   {
     heading: 'Certifications',
-    items: [{ title: 'ITS Software Development', issuer: 'Certiport (Pearson VUE)', date: '2026-04-30', pdf: itsCertificate }],
+    items: [
+      {
+        title: 'ITS Software Development',
+        issuer: 'Certiport (Pearson VUE)',
+        date: '2026-04-30',
+        pdf: itsCertificate,
+        preview: itsPreview,
+      },
+    ],
   },
   {
     heading: 'Assessments',
@@ -382,13 +403,15 @@ export const credentials: Group<Credential>[] = [
         issuer: 'Institute for Information & Communications Technology Promotion',
         date: '2025-12-10',
         pdf: topcit,
+        // Its first page shows a photo, birth date and score
+        preview: drawnCertificate,
       },
     ],
   },
   {
     heading: 'Eligibility',
     // TODO: Seanrei's exam date. The card shows no date until then.
-    items: [{ title: 'Civil Service Professional', issuer: 'Civil Service Commission', cover: 'Civil Service' }],
+    items: [{ title: 'Civil Service Professional', issuer: 'Civil Service Commission', preview: drawnCertificate }],
   },
   {
     heading: 'Awards & Recognition',
@@ -399,6 +422,7 @@ export const credentials: Group<Credential>[] = [
         issuer: 'Laguna State Polytechnic University',
         date: '2026-05-21',
         pdf: researchCongress,
+        preview: researchCongressPreview,
       },
       { title: 'DOST Scholar (2022 to 2026)', issuer: 'Department of Science and Technology' },
       { title: 'With High Honors', issuer: 'Saint Thomas Montessori Learning Center' },
@@ -417,6 +441,7 @@ export const introToGithub: Completion = {
   title: 'Introduction to GitHub',
   kind: 'course',
   url: introToGithubPdf,
+  preview: introToGithubPreview,
 }
 
 export const writeToMe: Group<string> = {

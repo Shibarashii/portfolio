@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { cvLink, github, linkedin } from '../content.ts'
+import { cvLink, github, linkedin, photo } from '../content.ts'
 
 // In page order
 const sections = ['About', 'Projects', 'Experience', 'Skills', 'Credentials', 'Contact']
 
 export function Header() {
+  const { caption, ...img } = photo
   const [open, setOpen] = useState(false)
   return (
     <header>
@@ -36,6 +37,12 @@ export function Header() {
           <a className="button" href="#projects">See the projects</a>
           <a className="button outline" href={cvLink.url}>Open CV</a>
         </p>
+      </div>
+      <div className="photo">
+        <figure className="print">
+          <img {...img} fetchPriority="high" />
+          <figcaption className="serif">{caption}</figcaption>
+        </figure>
       </div>
     </header>
   )
