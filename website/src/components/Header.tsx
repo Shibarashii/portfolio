@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header>
       <h1>Seanrei Valdeabella</h1>
-      <p>TODO: job title</p>
+      <p>Computer Science graduate specializing in full-stack development and AI/ML</p>
       <nav aria-label="Profiles and CV">
         <ul>
           <li><a href="https://github.com/Shibarashii">GitHub</a></li>
