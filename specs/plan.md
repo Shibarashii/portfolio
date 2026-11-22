@@ -38,7 +38,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 - [ ] T4: About and Contact sections + section nav
 - [x] T5: Experience section
 - [x] T6: Skills section
-- [ ] T7: Hand-listed Credentials subsections
+- [x] T7: Hand-listed Credentials subsections
 
 ### Checkpoint B
 - [ ] Spec success criteria 3, 4 and 7 met

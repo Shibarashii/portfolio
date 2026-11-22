@@ -127,13 +127,13 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 Also append the hand-listed Introduction to Github entry to Courses.
 
 **Acceptance criteria:**
-- [ ] Four `h3` subsections render above Course Completions
-- [ ] Every PDF from the spec's "Where the existing PDFs go" table opens from its spot
-- [ ] Civil Service renders as a card with no link
+- [x] Four `h3` subsections render above Course Completions
+- [x] Every PDF from the spec's "Where the existing PDFs go" table opens from its spot
+- [x] Civil Service renders as a card with no link
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: open each credential PDF
+- [x] `npm run build` passes
+- [x] Manual: open each credential PDF
 
 **Dependencies:** T2, T3
 **Files:** `src/content.ts`, `src/sections/Credentials.tsx`

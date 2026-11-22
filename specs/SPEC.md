@@ -141,7 +141,7 @@ export type Project = {
   built: string[]         // inside Details
 }
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
-export type Credential = { title: string; issuer: string; date: string; pdfs?: { label: string; url: string }[] }
+export type Credential = { title: string; issuer: string; date?: string; pdf?: string }
 
 export const projects: Group<Project>[] = [
   { heading: 'Web Applications', items: [/* PC Flipper Toolkit, ESPA, Hitboxd */] },
@@ -274,5 +274,6 @@ Before T4:
 
 Before T8:
 13. **Role cards.** Figma's `Card/Role` shows a summary and a Details link. The spec and the CV have bullets and no summary, so T5 shows the bullets. Still open: write a one-line summary per role and collapse the bullets, or change the card.
+14. **Score report link.** Figma's ITS credential card still shows "Score report (PDF)". Don't build it (decided 2026-11-22). Remove it from Figma.
 
 Before the first deploy, Seanrei turns on Pages: repo Settings → Pages → Source: GitHub Actions.

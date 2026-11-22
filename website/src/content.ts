@@ -1,5 +1,10 @@
+import researchCongress from '../../accomplishments/2026 Intercollegiate Student Research Congress.pdf?url'
 import ojtCertificate from '../../accomplishments/DOST OJT Certificate of Completion.pdf?url'
+import introToGithubPdf from '../../accomplishments/Introduction to Github.pdf?url'
+import topcit from '../../accomplishments/TOPCIT Certificate.pdf?url'
+import itsCertificate from '../../certifications/ITS Software Development/ITS Software Development Certification.pdf?url'
 import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
+import type { Completion } from './completions.ts'
 import * as logos from './logos/index.ts'
 
 export type Group<T> = { heading: string; items: T[] }
@@ -22,7 +27,7 @@ export type Role = { role: string; org: string; start: string; end?: string; bul
 
 export type Skill = { name: string; logo?: string }
 
-export type Credential = { title: string; issuer: string; date: string; pdfs?: { label: string; url: string }[] }
+export type Credential = { title: string; issuer: string; date?: string; pdf?: string }
 
 export const email = 'seanrei.ethan23@gmail.com'
 
@@ -303,6 +308,49 @@ export const skills: Group<Skill>[] = [
     ],
   },
 ]
+
+export const credentials: Group<Credential>[] = [
+  {
+    heading: 'Certifications',
+    items: [{ title: 'ITS Software Development', issuer: 'Certiport (Pearson VUE)', date: '2026-04-30', pdf: itsCertificate }],
+  },
+  {
+    heading: 'Assessments',
+    items: [
+      {
+        title: 'TOPCIT',
+        issuer: 'Institute for Information & Communications Technology Promotion',
+        date: '2025-12-10',
+        pdf: topcit,
+      },
+    ],
+  },
+  {
+    heading: 'Eligibility',
+    // TODO: Seanrei's exam date. The card shows no date until then.
+    items: [{ title: 'Civil Service Professional', issuer: 'Civil Service Commission' }],
+  },
+  {
+    heading: 'Awards & Recognition',
+    items: [
+      {
+        title: '2026 Intercollegiate Student Research Congress',
+        issuer: 'Laguna State Polytechnic University',
+        date: '2026-05-21',
+        pdf: researchCongress,
+      },
+    ],
+  },
+]
+
+// Listed by hand because its file name has no date
+export const introToGithub: Completion = {
+  date: '2024-02-08',
+  issuer: 'Microsoft Learn Student Ambassadors',
+  title: 'Introduction to GitHub',
+  kind: 'course',
+  url: introToGithubPdf,
+}
 
 export const writeToMe: Group<string> = {
   heading: 'Write to Me',
