@@ -21,13 +21,18 @@ export type Project = {
   repo?: string
   link?: string
   built: string[]
+  size?: 'xl' | 'large' // Title size and buttons. Small when left out.
 }
 
-export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
+// color is a class in index.css. Leaf when left out.
+export type Stamp = { text: string; color?: 'red' | 'sun' }
+
+export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string; stamp: Stamp }
 
 export type Skill = { name: string; logo?: string }
 
-export type Credential = { title: string; issuer: string; date?: string; pdf?: string }
+// With a pdf or a cover it is a card, otherwise a line in a list. The cover text stands in for a certificate.
+export type Credential = { title: string; issuer: string; date?: string; pdf?: string; cover?: string }
 
 export const email = 'seanrei.ethan23@gmail.com'
 
@@ -65,6 +70,7 @@ export const projects: Group<Project>[] = [
     items: [
       {
         title: 'PC Flipper Toolkit',
+        size: 'xl',
         summary: 'Tracks the profit on every PC you flip, from the parts you buy to the final sale.',
         stack: ['React', 'TypeScript', 'Django REST Framework', 'PostgreSQL'],
         dates: '2026',
@@ -105,6 +111,7 @@ export const projects: Group<Project>[] = [
     items: [
       {
         title: 'Nail Feature Classifier',
+        size: 'large',
         summary:
           'Deep learning image classification of nail features, built for the thesis “Probabilistic Detection of Systemic Diseases Using Deep Learning on Fingernail Biomarkers.”',
         stack: ['Python', 'PyTorch', 'Grad-CAM'],
@@ -117,6 +124,7 @@ export const projects: Group<Project>[] = [
       },
       {
         title: 'DAMA Braille Converter',
+        size: 'large',
         summary: 'Turns photos of Filipino and English Grade 1 Braille into plain text.',
         stack: ['Python', 'YOLO', 'Flask', 'OpenCV', 'LLM'],
         dates: 'Dec 2025',
@@ -191,6 +199,7 @@ export const experience: Group<Role>[] = [
           'Facilitated knowledge-transfer sessions for peers and new team members on backend systems and development practices.',
         ],
         pdf: ojtCertificate,
+        stamp: { text: 'DOST' },
       },
     ],
   },
@@ -207,6 +216,7 @@ export const experience: Group<Role>[] = [
           'Managed team communication and served as the central point for progress updates, task coordination, and conflict resolution.',
           'Maintained project momentum and team morale through active coordination, clear communication, and timely support.',
         ],
+        stamp: { text: 'LSPU', color: 'red' },
       },
       {
         role: 'Team Leader, Lead Developer',
@@ -218,6 +228,7 @@ export const experience: Group<Role>[] = [
           'Contributed the majority of the codebase, implementing core features and functionality.',
           'Analyzed and reviewed team members’ code to ensure quality and consistency before merging changes into the main codebase.',
         ],
+        stamp: { text: 'LSPU', color: 'sun' },
       },
     ],
   },
@@ -328,7 +339,7 @@ export const credentials: Group<Credential>[] = [
   {
     heading: 'Eligibility',
     // TODO: Seanrei's exam date. The card shows no date until then.
-    items: [{ title: 'Civil Service Professional', issuer: 'Civil Service Commission' }],
+    items: [{ title: 'Civil Service Professional', issuer: 'Civil Service Commission', cover: 'Civil Service' }],
   },
   {
     heading: 'Awards & Recognition',

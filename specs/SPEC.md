@@ -140,9 +140,11 @@ export type Project = {
   repo?: string; link?: string
   // Image fields are added in T9
   built: string[]         // inside Details
+  size?: 'xl' | 'large'   // title size and buttons, small when left out
 }
-export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string }
-export type Credential = { title: string; issuer: string; date?: string; pdf?: string }
+export type Stamp = { text: string; color?: 'red' | 'sun' }  // leaf when left out
+export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string; stamp: Stamp }
+export type Credential = { title: string; issuer: string; date?: string; pdf?: string; cover?: string }  // a card with a pdf or cover, else a line
 
 export const projects: Group<Project>[] = [
   { heading: 'Web Applications', items: [/* PC Flipper Toolkit, ESPA, Hitboxd */] },
@@ -181,18 +183,11 @@ export function Projects() {
         <section key={g.heading}>
           <h3>{g.heading}</h3>
           {g.items.map((p) => (
-            <article key={p.title} className="entry">
+            <article key={p.title} className={`project ${p.size ?? ''}`}>
               <h4>{p.title}</h4>
-              <p>{p.summary}</p>
-              <dl>
-                <dt>Stack</dt><dd>{p.stack.join(', ')}</dd>
-                <dt>Dates</dt><dd>{p.dates}</dd>
-                {p.repo && <><dt>Source</dt><dd><a href={p.repo}>GitHub<span className="visually-hidden"> source of {p.title}</span></a></dd></>}
-              </dl>
-              <details>
-                <summary>Details of {p.title}</summary>
-                <ul>{p.built.map((b) => <li key={b}>{b}</li>)}</ul>
-              </details>
+              <p className={p.size && 'lead'}>{p.summary}</p>
+              <p className="small">{p.stack.join(', ')}. {p.dates}</p>
+              {/* Then the link, and details with the built list */}
             </article>
           ))}
         </section>
@@ -274,7 +269,8 @@ Before T4:
 12. **Browser support policy.** Decided 2026-11-22: no polyfills, and plain links where popover is missing. The policy is in CLAUDE.md.
 
 Before T8:
-13. **Role cards.** Figma's `Card/Role` shows a summary and a Details link. The spec and the CV have bullets and no summary, so T5 shows the bullets. Still open: write a one-line summary per role and collapse the bullets, or change the card.
+13. **Role cards.** Figma's `Card/Role` shows a summary and a Details link. Decided 2026-11-22: show all the bullets, with no summary and no Details.
 14. **Score report link.** Figma's ITS credential card still shows "Score report (PDF)". Don't build it (decided 2026-11-22). Remove it from Figma.
+15. **Awards layout.** Figma's column fits one certificate. Decided 2026-11-22: Research Congress is the card, and the other seven are a "More awards" list under the four columns.
 
 Before the first deploy, Seanrei turns on Pages: repo Settings → Pages → Source: GitHub Actions.

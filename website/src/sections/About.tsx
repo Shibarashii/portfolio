@@ -6,15 +6,15 @@ export function About() {
       <h2 id="about-h">About</h2>
       <section>
         <h3>{whoIAm.heading}</h3>
-        {whoIAm.items.map((p) => <p key={p}>{p}</p>)}
+        {whoIAm.items.map((p) => <p key={p} className="lead">{p}</p>)}
       </section>
       <section>
         <h3>{education.heading}</h3>
         {education.items.map((s) => (
           <article key={s.school}>
             <h4>{s.school}</h4>
-            <p>{s.degree}</p>
-            <p>{s.years}</p>
+            <p className="small">{s.degree}</p>
+            <p className="small">{s.years}</p>
           </article>
         ))}
       </section>

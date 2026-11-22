@@ -149,19 +149,19 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Description:** Finish `index.css`: a readable max width, the Family album look, self-hosted fonts, light and dark themes via `prefers-color-scheme`, and visible `:focus-visible` styles. Fill in the Website commands in CLAUDE.md.
 
 **Acceptance criteria:**
-- [ ] No horizontal scroll at 375px. Cards stack on phones.
-- [ ] Follows the spec's "Visual design" rules, from `[Ready for dev]` Figma sections only
-- [ ] Lighthouse Accessibility ≥ 95 on the live URL
-- [ ] Dark mode switches the `--color-*` variables with `prefers-color-scheme`
-- [ ] Prints tilt with the `rotate` property, and hover sets `rotate: 0deg`. No transitions under `prefers-reduced-motion: reduce`.
-- [ ] Focus rings use `outline`, with at least 3:1 contrast
-- [ ] Text set in a web font has `font-size-adjust: from-font`
-- [ ] CLAUDE.md "Website" lists hosting and the dev/build/test commands
+- [x] No horizontal scroll at 375px. Cards stack on phones.
+- [x] Follows the spec's "Visual design" rules, from `[Ready for dev]` Figma sections only
+- [ ] Lighthouse Accessibility ≥ 95 on the live URL (100 on the local build, 2026-11-22. Check again after the push.)
+- [x] Dark mode switches the `--color-*` variables with `prefers-color-scheme`
+- [x] Prints tilt with the `rotate` property, and hover sets `rotate: 0deg`. No transitions under `prefers-reduced-motion: reduce`.
+- [x] Focus rings use `outline`, with at least 3:1 contrast
+- [x] Text set in a web font has `font-size-adjust: from-font`
+- [x] CLAUDE.md "Website" lists hosting and the dev/build/test commands
 
 **Verification:**
-- [ ] Manual: check at 375px and desktop widths in the browser pane, in both themes
-- [ ] Manual: tab through the whole page
-- [ ] Run Lighthouse
+- [x] Manual: check at 375px and desktop widths in the browser pane, in both themes
+- [x] Manual: tab through the whole page
+- [x] Run Lighthouse
 
 **Dependencies:** T4–T7
 **Files:** `src/index.css`, `CLAUDE.md`

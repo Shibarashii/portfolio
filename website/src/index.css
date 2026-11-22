@@ -1,6 +1,249 @@
+/* Fonts: SIL Open Font License, see fonts/*-LICENSE.txt. Latin only. */
+@font-face {
+  font-family: 'Young Serif';
+  src: url('./fonts/young-serif-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('./fonts/hanken-grotesk-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Figma variables: collection Theme (Light here, Dark below) and collection Breakpoint (Mobile here, Desktop below) */
 :root {
   color-scheme: light dark;
-  font-family: system-ui, sans-serif;
+
+  --color-bg: #d3e8c4;
+  --color-bg-alt: #eff7e9;
+  --color-band: #1e6b3c;
+  --color-skills: #f6c945;
+  --color-card: #ffffff;
+  --color-print: #ffffff;
+  --color-text: #17351f;
+  --color-accent: #a3213c;
+  --color-button: #a3213c;
+  --color-button-hover: #7f172d;
+  --color-on-button: #ffffff;
+  --color-on-band: #ffffff;
+  --color-on-skills: #17351f;
+  --color-stack: #a9cb95;
+  --color-shadow: rgb(13 46 23 / 0.22);
+  --color-shadow-lifted: rgb(13 46 23 / 0.34);
+  --color-shadow-sticker: rgb(89 61 0 / 0.28);
+  /* The same in both themes */
+  --color-art-sun: #f6c945;
+  --color-art-paper: #fbf7e6;
+  --color-art-red: #a3213c;
+  --color-art-leaf: #1e6b3c;
+  --color-sticker: #ffffff;
+  --color-on-art: #17351f;
+  --color-on-stamp: #ffffff;
+
+  --shadow-print: 0 8px 22px var(--color-shadow);
+  --shadow-lifted: 0 18px 36px var(--color-shadow-lifted);
+
+  --radius-print: 3px;
+  --radius-card: 4px;
+  --radius-button: 6px;
+  --radius-sticker: 20px;
+
+  --gutter: 1.25rem;
+  --section-y: 3.5rem;
+  --heading-display: 3.25rem;
+  --heading-section: 2.75rem;
+  --heading-subsection: 1.625rem;
+  --heading-group: 1.5rem;
+  --title-xl: 2.25rem;
+  --title-large: 2.25rem;
+  --title-medium: 1.625rem;
+  --title-small: 1.375rem;
+  --caption-print: 1.0625rem;
+  --body-lead: 1.25rem;
+  --body-medium: 1.125rem;
+  --body-small: 1.0625rem;
+  --label-strong: 1.125rem;
+  --label-button: 1.125rem;
+  --label-nav: 1.0625rem;
+  --label-skill: 0.875rem;
+
+  /* Text and link color of the surface you are on. Bands, cards and Skills change them. */
+  --fg: var(--color-text);
+  --link: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #10231a;
+    --color-bg-alt: #162d21;
+    --color-band: #1d5f39;
+    --color-skills: #57192b;
+    --color-card: #213d2d;
+    --color-print: #e6ecdd;
+    --color-text: #eaf3e2;
+    --color-accent: #f5a3b2;
+    --color-button: #f5a3b2;
+    --color-button-hover: #fbd0d8;
+    --color-on-button: #34101a;
+    --color-on-band: #f4f9ef;
+    --color-on-skills: #fbe39a;
+    --color-stack: #0f1f17;
+    --color-shadow: rgb(0 0 0 / 0.45);
+    --color-shadow-lifted: rgb(0 0 0 / 0.6);
+    --color-shadow-sticker: rgb(0 0 0 / 0.45);
+  }
+}
+
+@media (width >= 48rem) {
+  :root {
+    /* 64px from a 1440px window, less on tablets so the nav fits on one line */
+    --gutter: clamp(2rem, 4.45vw, 4rem);
+    --section-y: 7rem;
+    --heading-display: 5.75rem;
+    --heading-section: 4.75rem;
+    --heading-subsection: 2.125rem;
+    --heading-group: 1.75rem;
+    --title-xl: 3.5rem;
+    --title-large: 2.75rem;
+    --title-medium: 1.875rem;
+    --title-small: 1.5rem;
+    --caption-print: 1.25rem;
+    --body-lead: 1.375rem;
+    --body-medium: 1.25rem;
+    --label-strong: 1.25rem;
+    --label-nav: 1.125rem;
+    --label-skill: 1.0625rem;
+  }
+}
+
+/* Base */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Every rule that picks a web font also sets font-size-adjust, because the value is per font */
+body {
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-size-adjust: from-font;
+  font-size: var(--body-medium);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--fg);
+  background: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+.serif {
+  font-family: 'Young Serif', Georgia, serif;
+  font-size-adjust: from-font;
+  font-weight: 400;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  /* Shrinks under 360px, where the surname would not fit */
+  font-size: min(var(--heading-display), 14vw);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--heading-section);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--heading-subsection);
+  color: var(--link);
+}
+
+h4 {
+  font-size: var(--title-medium);
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.lead {
+  font-size: var(--body-lead);
+  line-height: 1.45;
+}
+
+.small {
+  font-size: var(--body-small);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+a,
+summary,
+.menu-button {
+  color: var(--link);
+  font-size: var(--label-button);
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+a,
+.menu-button {
+  display: inline-block;
+  padding-block: 0.75rem;
+}
+
+:is(a, summary, .menu-button):hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 3px solid var(--fg);
+  outline-offset: 4px;
+  border-radius: var(--radius-button);
+}
+
+/* Focused by the skip link, so a ring around the whole page says nothing */
+main:focus-visible {
+  outline: none;
+}
+
+.button {
+  padding: calc(1rem - 2px) calc(1.25rem - 2px);
+  border: 2px solid transparent;
+  border-radius: var(--radius-button);
+  color: var(--color-on-button);
+  background: var(--color-button);
+}
+
+.button:hover {
+  background: var(--color-button-hover);
+}
+
+.button.outline {
+  border-color: var(--fg);
+  color: var(--fg);
+  background: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 /* Read by screen readers only. Shows itself if something inside takes focus. */
@@ -18,9 +261,154 @@
 
 .skip-link {
   position: fixed;
+  z-index: 1;
   inset: 0 auto auto 0;
   padding: 0.75rem 1rem;
-  background: Canvas;
+  background: var(--color-bg);
+}
+
+.skip-link:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Surfaces */
+.band {
+  --fg: var(--color-on-band);
+  --link: var(--color-on-band);
+
+  color: var(--fg);
+  background: var(--color-band);
+}
+
+.card {
+  --fg: var(--color-text);
+  --link: var(--color-accent);
+
+  padding: 1.5rem;
+  border-radius: var(--radius-card);
+  color: var(--fg);
+  background: var(--color-card);
+  box-shadow: var(--shadow-print);
+}
+
+.print {
+  display: grid;
+  padding: 0.5rem;
+  border-radius: var(--radius-print);
+  background: var(--color-print);
+  box-shadow: var(--shadow-print);
+  rotate: 1.2deg;
+}
+
+:is(article:hover, article:focus-within) > .print {
+  rotate: 0deg;
+  box-shadow: var(--shadow-lifted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .print {
+    transition: rotate 220ms, box-shadow 220ms;
+  }
+}
+
+.stamp {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 72px;
+  block-size: 88px;
+  font-size: var(--caption-print);
+  color: var(--color-on-stamp);
+  background: var(--color-art-leaf);
+  /* The perforated edge */
+  outline: 4px dashed var(--color-card);
+  outline-offset: -2px;
+}
+
+.stamp.red {
+  background: var(--color-art-red);
+}
+
+.stamp.sun {
+  color: var(--color-on-art);
+  background: var(--color-art-sun);
+}
+
+/* Page: bands run edge to edge, content stops at 1312px */
+header,
+main > section,
+footer {
+  padding-inline: max(var(--gutter), (100% - 82rem) / 2);
+}
+
+main > section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  padding-block: var(--section-y);
+}
+
+main > section > section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 1.5rem;
+}
+
+/* Header */
+header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 0.75rem 2.5rem;
+}
+
+.bar {
+  --link: var(--fg);
+
+  display: flex;
+  justify-content: space-between;
+  column-gap: 1.5rem;
+}
+
+.bar ul:not([popover]) {
+  display: flex;
+  gap: 1rem;
+}
+
+.bar nav:last-child,
+.bar nav:last-child ul {
+  flex: 1;
+  justify-content: space-between;
+}
+
+/* An empty first item, so the space after Menu matches the space between the links */
+.bar nav:last-child ul::before {
+  content: '';
+}
+
+.bar :is(a, .menu-button) {
+  font-size: var(--label-nav);
+  font-weight: 600;
+}
+
+.menu-button {
+  padding-inline: 0;
+  border: 0;
+  font-family: inherit;
+  font-size-adjust: from-font;
+  background: none;
+  cursor: pointer;
+}
+
+.intro {
+  display: grid;
+  gap: 1.5rem;
+  max-inline-size: 40rem;
+}
+
+.intro .lead {
+  max-inline-size: 35rem;
 }
 
 /* Without popover the list is always shown, so it needs no button */
@@ -28,34 +416,770 @@
   .menu-button {
     display: none;
   }
+
+  .bar,
+  .section-menu {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+  }
+}
+
+@media (width < 48rem) {
+  .section-menu:popover-open a {
+    display: block;
+    padding: 0.5rem 0.25rem;
+    font-family: 'Young Serif', Georgia, serif;
+    font-size-adjust: from-font;
+    font-size: var(--title-xl);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  /* The open menu fills the screen under the bar, which stays on top with Close and the profile links */
+  .section-menu:popover-open {
+    --fg: var(--color-on-band);
+    --link: var(--color-on-band);
+
+    position: fixed;
+    inset: 3.625rem 0 0;
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+    inline-size: auto;
+    block-size: auto;
+    max-block-size: none;
+    padding: 2rem var(--gutter) 2.5rem;
+    border: 0;
+    color: var(--fg);
+    background: var(--color-band);
+  }
+
+  .bar:has(:popover-open) {
+    --fg: var(--color-on-band);
+
+    position: fixed;
+    z-index: 1;
+    inset: 0 0 auto;
+    block-size: 3.625rem;
+    padding: 0.75rem var(--gutter) 0;
+    color: var(--fg);
+    background: var(--color-band);
+  }
+
+  header:has(:popover-open) {
+    padding-block-start: 4.25rem;
+  }
+
+  :root:has(:popover-open) {
+    overflow: hidden;
+  }
 }
 
 @media (width >= 48rem) {
+  header {
+    gap: 7rem;
+    padding-block: 2rem 4rem;
+  }
+
   .menu-button {
     display: none;
   }
 
+  .bar nav:last-child {
+    flex: none;
+  }
+
+  .bar nav:last-child ul::before {
+    content: none;
+  }
+
+  .intro {
+    gap: 2rem;
+  }
+
   /* Wide enough for the links: undo the browser's popover styles and show the list in place */
   .section-menu {
-    display: flex;
-    gap: 1rem;
     position: static;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1rem;
     inline-size: auto;
-    margin: 0;
     padding: 0;
     border: 0;
-    background: none;
     color: inherit;
-    list-style: none;
+    background: none;
+    overflow: visible;
   }
 }
 
-/* Stickers are white in both themes, because some logos are black. T8 does the rest. */
+@media (width >= 70rem) {
+  .bar ul:not([popover]),
+  .section-menu {
+    column-gap: 1.5rem;
+  }
+
+  /* The green panel starts 100px right of the middle */
+  header {
+    align-content: start;
+    min-block-size: min(50rem, 100svh);
+    background: linear-gradient(to right, transparent calc(50% + 100px), var(--color-band) 0);
+  }
+
+  .bar nav:last-child {
+    --fg: var(--color-on-band);
+    --link: var(--color-on-band);
+  }
+
+  .intro {
+    max-inline-size: min(40rem, 50% + 100px - 2rem);
+  }
+}
+
+/* About */
+#about {
+  padding-block: 3rem 2rem;
+}
+
+#about section {
+  gap: 1rem;
+}
+
+#about article {
+  display: grid;
+  gap: 0.25rem;
+}
+
+#about h4 {
+  font-size: var(--title-small);
+  line-height: 1.2;
+}
+
+@media (width >= 48rem) {
+  #about {
+    padding-block: 6rem 4.5rem;
+  }
+}
+
+@media (width >= 64rem) {
+  #about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 32.5rem);
+    column-gap: 6rem;
+  }
+
+  #about h2 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Projects. The images come with T9, which also places the large cards beside their prints. */
+#projects {
+  gap: 0;
+  padding: 0;
+}
+
+#projects > * {
+  padding: 1.5rem max(var(--gutter), (100% - 82rem) / 2);
+}
+
+#projects > section {
+  gap: 3rem 4rem;
+  padding-block-end: 3rem;
+}
+
+#projects > .band {
+  padding-block: var(--section-y);
+}
+
+#projects h3,
+#experience h3,
+.project.xl,
+.role:only-of-type {
+  grid-column: 1 / -1;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 0.25rem;
+}
+
+:is(.xl, .large) {
+  gap: 0.75rem;
+}
+
+:is(.xl, .large) h4 {
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  /* Browsers drop the fi ligature when there is letter spacing */
+  font-feature-settings: 'liga';
+}
+
+.xl h4 {
+  font-size: var(--title-xl);
+}
+
+.large h4 {
+  font-size: var(--title-large);
+}
+
+#projects .band h4 {
+  font-size: var(--title-small);
+  line-height: 1.2;
+}
+
+.project > p {
+  max-inline-size: 42rem;
+}
+
+/* The links float, so Details sits on their line and its open panel takes the full width under them */
+.links {
+  display: flow-root;
+}
+
+.links > a {
+  float: left;
+  margin-inline-end: 1.25rem;
+}
+
+.links > .button {
+  margin-inline-end: 0.75rem;
+}
+
+summary {
+  inline-size: fit-content;
+  list-style: none;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.links summary {
+  display: inline-block;
+}
+
+.links summary:not(.button) {
+  padding-block: 0.75rem;
+}
+
+/* One of the two labels shows, depending on the state */
+details:not([open]) > summary .when-open,
+details[open] > summary .when-closed {
+  display: none;
+}
+
+.panel {
+  display: grid;
+  gap: 1.5rem;
+  clear: both;
+  margin-block-start: 1rem;
+}
+
+.panel h5 {
+  font-size: var(--title-small);
+  color: var(--link);
+}
+
+.panel ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1.25rem 3rem;
+}
+
+@media (width >= 48rem) {
+  #projects > h2 {
+    padding-block: 3.5rem 0;
+  }
+
+  #projects > section {
+    padding-block: 6rem 0;
+  }
+
+  #projects > section:has(+ .band) {
+    padding-block-end: 7rem;
+  }
+
+  .xl .panel {
+    padding: 2.5rem 4rem 3rem;
+  }
+}
+
+@media (width >= 64rem) {
+  #projects > section,
+  #experience > section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #projects > .band {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Experience */
+#experience {
+  background: var(--color-bg-alt);
+}
+
+/* The stamp row sits above the text on phones and beside it on desktop */
+.role {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.role > div:first-child {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+}
+
+.role h4 {
+  font-size: var(--heading-subsection);
+}
+
+.role ul {
+  display: grid;
+  gap: 0.5rem;
+  max-inline-size: 50rem;
+  padding-inline-start: 1.25rem;
+  list-style: disc;
+}
+
+.strong {
+  font-size: var(--label-strong);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.postmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.postmark p {
+  max-inline-size: 8rem;
+  font-size: var(--label-nav);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: end;
+  color: var(--link);
+}
+
+@media (width >= 48rem) {
+  #experience,
+  #credentials {
+    gap: 4.5rem;
+  }
+
+  #experience > section {
+    gap: 1.5rem 2.5rem;
+  }
+
+  .role {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+
+  .role:not(:only-of-type) h4 {
+    font-size: var(--title-medium);
+  }
+
+  .postmark {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .postmark p {
+    text-align: center;
+  }
+
+  .stamp {
+    inline-size: 104px;
+    block-size: 128px;
+  }
+}
+
+/* Skills */
+#skills {
+  --fg: var(--color-on-skills);
+  --link: var(--color-on-skills);
+
+  gap: 2rem;
+  color: var(--fg);
+  background: var(--color-skills);
+}
+
+#skills section {
+  gap: 1rem;
+}
+
+#skills h3,
+.credentials h3 {
+  font-size: var(--heading-group);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr));
+  gap: 1rem 0.5rem;
+}
+
+.skills li {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.5rem;
+  font-size: var(--label-skill);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* White in both themes, because some logos are black */
 .sticker {
-  display: inline-grid;
+  display: grid;
   place-items: center;
-  inline-size: 54px;
-  block-size: 54px;
-  background: white;
-  color: black;
+  inline-size: 64px;
+  block-size: 64px;
+  border-radius: var(--radius-sticker);
+  color: var(--color-art-leaf);
+  background: var(--color-sticker);
+  box-shadow: 0 4px 10px var(--color-shadow-sticker);
+  rotate: 3deg;
+}
+
+.skills li:nth-child(3n + 2) .sticker {
+  rotate: -2deg;
+}
+
+.skills li:nth-child(3n) .sticker {
+  rotate: 1.5deg;
+}
+
+.sticker img {
+  inline-size: 38px;
+  block-size: 38px;
+}
+
+@media (width >= 48rem) {
+  #skills {
+    gap: 3rem;
+    padding-block: var(--section-y);
+  }
+
+  .skills {
+    grid-template-columns: repeat(auto-fill, 6.75rem);
+    gap: 1.25rem 0.5rem;
+  }
+
+  .sticker {
+    inline-size: 90px;
+    block-size: 90px;
+    font-size: var(--title-small);
+  }
+
+  .sticker img {
+    inline-size: 54px;
+    block-size: 54px;
+  }
+}
+
+@media (width >= 82rem) {
+  #skills {
+    grid-template-columns: 36rem minmax(0, 1fr);
+  }
+
+  #skills h2,
+  #skills section:nth-last-of-type(-n + 2) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Credentials */
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 2rem;
+}
+
+/* Each subsection's parts join the grid: its group takes a column, and its other awards a full row */
+.credentials > section {
+  display: contents;
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.credential {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.credential > div:last-child {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.credential h4 {
+  font-size: var(--title-small);
+  line-height: 1.2;
+}
+
+.credential .print,
+.cover {
+  block-size: 6.25rem;
+}
+
+.credentials > section:nth-of-type(even) .print {
+  rotate: -1.2deg;
+}
+
+/* A drawn certificate: paper, border and seal */
+.paper {
+  display: grid;
+  place-items: end center;
+  padding-block-end: 12%;
+  background: var(--color-art-paper);
+  outline: 2px solid var(--color-art-leaf);
+  outline-offset: -8px;
+}
+
+.paper::after {
+  content: '';
+  inline-size: 16%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-art-red);
+}
+
+.cover {
+  display: grid;
+  place-items: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-print);
+  text-align: center;
+}
+
+.more {
+  grid-column: 1 / -1;
+}
+
+.more ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.more h4 {
+  margin-block-end: 1rem;
+  font-size: var(--title-small);
+  color: var(--link);
+}
+
+.more .serif {
+  font-size: var(--caption-print);
+  line-height: 1.25;
+}
+
+.courses:not([open]) {
+  box-shadow: var(--shadow-print), 0 8px 0 var(--color-stack);
+}
+
+.courses summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  inline-size: 100%;
+}
+
+.courses summary .serif {
+  flex: 1;
+  font-size: var(--title-small);
+  color: var(--fg);
+}
+
+.courses summary:hover .serif {
+  text-decoration: none;
+}
+
+.courses section {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: 2rem;
+}
+
+.courses h4 {
+  font-size: var(--heading-subsection);
+  color: var(--link);
+}
+
+.courses ul {
+  column-gap: 4rem;
+}
+
+.courses li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  break-inside: avoid;
+}
+
+.courses li a {
+  padding-block: 0.5rem;
+  font-size: var(--label-nav);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.courses time {
+  white-space: nowrap;
+}
+
+@media (width >= 48rem) {
+  .group {
+    gap: 1rem;
+  }
+
+  .credential {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .credential .print,
+  .cover {
+    block-size: 13.75rem;
+  }
+
+  .credential .print {
+    padding: 0.75rem;
+  }
+
+  .paper {
+    outline-offset: -14px;
+  }
+
+  .cover {
+    font-size: var(--title-small);
+  }
+
+  .credentials {
+    row-gap: 4rem;
+  }
+
+  .courses {
+    padding: 2rem 2.5rem;
+  }
+
+  .courses[open] {
+    padding: 2.5rem 4rem 3rem;
+  }
+
+  .courses summary .serif {
+    font-size: var(--title-medium);
+  }
+}
+
+@media (width >= 70rem) {
+  .courses ul {
+    columns: 2;
+  }
+}
+
+/* Contact */
+#contact {
+  gap: 2rem;
+  padding-block-end: 0;
+}
+
+.postcard {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+}
+
+.postcard section {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.postcard section + section {
+  gap: 0.25rem;
+}
+
+.postcard li a {
+  color: var(--fg);
+}
+
+.email {
+  font-size: var(--label-nav);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.postcard .stamp {
+  position: absolute;
+  inset-block-end: 1.5rem;
+  inset-inline-end: 1.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 2rem 2.5rem;
+}
+
+footer p {
+  font-size: var(--caption-print);
+}
+
+@media (width >= 48rem) {
+  #contact {
+    gap: 3.5rem;
+  }
+
+  .postcard {
+    padding: 3.5rem;
+  }
+
+  .postcard .stamp {
+    inset-block-end: 3.5rem;
+    inset-inline-end: 3.5rem;
+  }
+
+  footer {
+    padding-block: 3.5rem;
+  }
+
+  footer p {
+    font-size: var(--title-small);
+  }
+}
+
+@media (width >= 64rem) {
+  .postcard {
+    grid-template-columns: minmax(0, 38.5rem) minmax(0, 1fr) auto;
+    column-gap: 4rem;
+  }
+
+  .postcard .stamp {
+    position: static;
+  }
 }

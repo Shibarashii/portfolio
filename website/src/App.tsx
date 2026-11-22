@@ -18,6 +18,10 @@ export function App() {
         <Credentials />
         <Contact />
       </main>
+      <footer className="band">
+        <p className="serif">Seanrei Valdeabella</p>
+        <a href="#top">Back to top</a>
+      </footer>
     </>
   )
 }

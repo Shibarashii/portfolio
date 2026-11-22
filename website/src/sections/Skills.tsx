@@ -11,7 +11,7 @@ export function Skills() {
           <ul role="list" className="skills">
             {g.items.map((s) => (
               <li key={s.name}>
-                <span className="sticker" aria-hidden="true">
+                <span className="sticker serif" aria-hidden="true">
                   {s.logo ? <img src={s.logo} alt="" width="54" height="54" loading="lazy" /> : s.name}
                 </span>
                 {s.name}
