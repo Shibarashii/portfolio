@@ -9,12 +9,12 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 
 **Acceptance criteria:**
 - [x] `npm run dev` and `npm run build` both work, and the CV link opens the PDF in each
-- [ ] Pushing to `main` deploys, and `https://shibarashii.github.io/portfolio/` shows the header with working links
+- [x] Pushing to `main` deploys, and `https://shibarashii.github.io/portfolio/` shows the header with working links
 - [x] `.gitignore` covers `website/dist` and `node_modules`
 
 **Verification:**
 - [x] `npm run build && npm run preview`, then click the CV link
-- [ ] Open the live URL after the workflow finishes (needs Pages enabled)
+- [x] Open the live URL after the workflow finishes (needs Pages enabled)
 
 **Dependencies:** None
 **Files:** `website/` (template), `website/vite.config.ts`, `website/src/App.tsx`, `website/src/components/Header.tsx`, `website/src/index.css`, `.github/workflows/deploy.yml`
@@ -39,9 +39,9 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Scope:** M
 
 ## Checkpoint A
-- [ ] `npm test && npm run build` pass
-- [ ] Live site shows the header, CV link and 34 courses
-- [ ] Human review before Phase 2
+- [x] `npm test && npm run build` pass
+- [x] Live site shows the header, CV link and 34 courses
+- [x] Human review before Phase 2
 
 ## Phase 2: Sections
 
@@ -49,15 +49,15 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Description:** Create `content.ts` with the `Group<T>`, `Project`, `Role` and `Credential` types. Seed `projects` with the 8 projects in the spec's "Projects shown" table, plus an empty Hardware & Homelab group. Render `Projects.tsx` per the spec's code sample, without images (T9 adds them).
 
 **Acceptance criteria:**
-- [ ] Web Applications, Machine Learning and Desktop Applications render as `h3` subsections. Each card has a title, a summary, stack, dates, links and details that open on this page.
-- [ ] Hardware & Homelab is not rendered while it's empty
-- [ ] No two links with the same name go to different places, via a `visually-hidden` class in `index.css`
-- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. ESPA has no source link, and its wording is approved by Seanrei.
+- [x] Web Applications, Machine Learning and Desktop Applications render as `h3` subsections. Each card has a title, a summary, stack, dates, links and details that open on this page.
+- [x] Hardware & Homelab is not rendered while it's empty
+- [x] No two links with the same name go to different places, via a `visually-hidden` class in `index.css`
+- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. ESPA has no source link, and its wording is approved by Seanrei. (Only ESPA is left: its card says `TODO` in `content.ts`. Replace it before the next push.)
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: open and close every card's details with the keyboard
-- [ ] Manual: all 7 source links and the PC Flipper live link open without being logged in to GitHub
+- [x] `npm run build` passes
+- [x] Manual: open and close every card's details with the keyboard
+- [x] Manual: all 7 source links and the PC Flipper live link open without being logged in to GitHub
 
 **Dependencies:** T1
 **Files:** `src/content.ts`, `src/sections/Projects.tsx`, `src/App.tsx`, `src/index.css`

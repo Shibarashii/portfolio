@@ -25,13 +25,13 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 
 ## Task List
 ### Phase 1: Foundation (risky parts first)
-- [ ] T1: Scaffold the Vite app with a header and CV link, and deploy it to Pages
+- [x] T1: Scaffold the Vite app with a header and CV link, and deploy it to Pages
 - [x] T2: Course completions, generated from file names
 
 ### Checkpoint A
-- [ ] `npm test` and `npm run build` pass
-- [ ] The live Pages URL shows the header, a working CV link, and 34 courses
-- [ ] Human review
+- [x] `npm test` and `npm run build` pass
+- [x] The live Pages URL shows the header, a working CV link, and 34 courses
+- [x] Human review
 
 ### Phase 2: Sections
 - [ ] T3: Content types + Projects section
