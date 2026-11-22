@@ -80,7 +80,8 @@ The last three were listed as web applications before this revision. They are Wi
 | File | Goes to |
 |---|---|
 | `completions/**` (34) | Credentials → Course Completions (generated) |
-| `certifications/ITS Software Development/*` | Credentials → Certifications (certificate + score report) |
+| `certifications/ITS Software Development/ITS Software Development Certification.pdf` | Credentials → Certifications |
+| ITS score report (gitignored, local only) | Nowhere. It holds personal details (decided 2026-11-22) |
 | `accomplishments/TOPCIT Certificate.pdf` | Credentials → Assessments |
 | `accomplishments/2026 Intercollegiate Student Research Congress.pdf` | Credentials → Awards & Recognition |
 | `accomplishments/DOST OJT Certificate of Completion.pdf` | Experience → Work & Internships (the OJT entry's PDF link) |

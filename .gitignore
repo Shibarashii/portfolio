@@ -6,5 +6,8 @@
 *.out
 *.synctex.gz
 
+# Score reports hold personal details
+certifications/**/*Score Report*.pdf
+
 .env*
 node_modules/

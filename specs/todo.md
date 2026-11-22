@@ -117,7 +117,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 
 ### T7: Hand-listed Credentials subsections
 **Description:** Add `credentials` data and render it above Course Completions:
-- Certifications: ITS certificate + score report
+- Certifications: ITS certificate
 - Assessments: TOPCIT
 - Eligibility: Civil Service card, no PDF
 - Awards & Recognition: Research Congress

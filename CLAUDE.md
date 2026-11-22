@@ -5,7 +5,7 @@ This repo holds two things: Seanrei Valdeabella's portfolio documents, and the p
 ## Layout
 - `curriculum_vitae/src/CurriculumVitae.tex`: the CV source (Jake Gutierrez resume template, MIT). The built `CurriculumVitae.pdf` sits next to it and is committed.
 - `completions/Course Certificates/`, `completions/Specialization Certificates/`: course and specialization certificates (Meta, Google, IBM, Cisco).
-- `certifications/<Name>/`: industry certifications, with score reports where there are any (ITS Software Development).
+- `certifications/<Name>/`: industry certifications (ITS Software Development). Score reports hold personal details, so they are gitignored and never published (decided 2026-11-22).
 - `accomplishments/`: awards, OJT, research congress, TOPCIT and similar.
 - Website: not built yet. React + Vite (see "Website" below).
 
