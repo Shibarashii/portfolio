@@ -36,7 +36,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 ### Phase 2: Sections
 - [ ] T3: Content types + Projects section
 - [ ] T4: About and Contact sections + section nav
-- [ ] T5: Experience section
+- [x] T5: Experience section
 - [ ] T6: Skills section
 - [ ] T7: Hand-listed Credentials subsections
 

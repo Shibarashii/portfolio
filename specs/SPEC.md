@@ -272,4 +272,7 @@ Before T4:
 11. **Mobile menu.** Decided 2026-11-22: T4 builds `Nav/Menu` with the browser's built-in popover.
 12. **Browser support policy.** Decided 2026-11-22: no polyfills, and plain links where popover is missing. The policy is in CLAUDE.md.
 
+Before T8:
+13. **Role cards.** Figma's `Card/Role` shows a summary and a Details link. The spec and the CV have bullets and no summary, so T5 shows the bullets. Still open: write a one-line summary per role and collapse the bullets, or change the card.
+
 Before the first deploy, Seanrei turns on Pages: repo Settings → Pages → Source: GitHub Actions.

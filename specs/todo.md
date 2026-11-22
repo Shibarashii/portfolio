@@ -87,14 +87,14 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 **Description:** Add `experience` data (Work & Internships and Leadership from the CV) and `Experience.tsx`. The DOST OJT entry links its certificate PDF.
 
 **Acceptance criteria:**
-- [ ] Two `h3` subsections. Entries show role, org, dates and bullets.
-- [ ] The OJT entry has a working certificate link
-- [ ] Matches the CV's Experience and Leadership sections
-- [ ] Its nav link is added to `Header.tsx`
+- [x] Two `h3` subsections. Entries show role, org, dates and bullets.
+- [x] The OJT entry has a working certificate link
+- [x] Matches the CV's Experience and Leadership sections
+- [x] Its nav link is added to `Header.tsx`
 
 **Verification:**
-- [ ] `npm run build` passes
-- [ ] Manual: open the OJT PDF
+- [x] `npm run build` passes
+- [x] Manual: open the OJT PDF
 
 **Dependencies:** T3
 **Files:** `src/content.ts`, `src/sections/Experience.tsx`, `src/App.tsx`, `src/components/Header.tsx`

@@ -1,3 +1,4 @@
+import ojtCertificate from '../../accomplishments/DOST OJT Certificate of Completion.pdf?url'
 import cv from '../../curriculum_vitae/src/CurriculumVitae.pdf?url'
 
 export type Group<T> = { heading: string; items: T[] }
@@ -162,6 +163,56 @@ export const projects: Group<Project>[] = [
     ],
   },
   { heading: 'Hardware & Homelab', items: [] },
+]
+
+export const experience: Group<Role>[] = [
+  {
+    heading: 'Work & Internships',
+    items: [
+      {
+        role: 'Back-End Developer Intern',
+        org: 'Department of Science and Technology (remote, based in Taguig City, Philippines)',
+        start: 'January 2026',
+        end: 'April 2026',
+        bullets: [
+          'Developed and maintained microservices and REST APIs using TypeScript and Node.js.',
+          'Implemented user stories across backend services, translating requirements into features.',
+          'Integrated Apache Kafka to support reliable asynchronous communication between microservices.',
+          'Created comprehensive unit tests with Jest to improve code reliability and regression coverage.',
+          'Conducted code reviews focused on maintainability, performance, and adherence to backend development standards.',
+          'Facilitated knowledge-transfer sessions for peers and new team members on backend systems and development practices.',
+        ],
+        pdf: ojtCertificate,
+      },
+    ],
+  },
+  {
+    heading: 'Leadership',
+    items: [
+      {
+        role: 'Project Manager and Model Developer',
+        org: 'Undergraduate Thesis, LSPU Santa Cruz',
+        start: '2025',
+        end: '2026',
+        bullets: [
+          'Directed a three-person project team, coordinating task assignments, roles, deadlines, project scope, and timeline.',
+          'Managed team communication and served as the central point for progress updates, task coordination, and conflict resolution.',
+          'Maintained project momentum and team morale through active coordination, clear communication, and timely support.',
+        ],
+      },
+      {
+        role: 'Team Leader, Lead Developer',
+        org: 'Software Engineering, LSPU Santa Cruz',
+        start: '2025',
+        end: '2026',
+        bullets: [
+          'Oversaw project progress by coordinating team members, assigning tasks, and tracking development priorities.',
+          'Contributed the majority of the codebase, implementing core features and functionality.',
+          'Analyzed and reviewed team members’ code to ensure quality and consistency before merging changes into the main codebase.',
+        ],
+      },
+    ],
+  },
 ]
 
 export const writeToMe: Group<string> = {
