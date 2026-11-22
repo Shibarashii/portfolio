@@ -1,0 +1,10 @@
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  base: '/portfolio/',
+  plugins: [react()],
+  // The PDFs are imported from the repo root, one level up
+  server: { fs: { allow: ['..'] } },
+})
