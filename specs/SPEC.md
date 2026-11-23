@@ -21,7 +21,7 @@ The subsection headings below are the defaults. They live in `content.ts`, so re
 | **Credentials** | Certifications, Assessments, Eligibility, Awards & Recognition, Course Completions | Title, issuer, date, PDF links (optional) |
 | **Contact** | Write to Me, Find Me Online | Email link (the CV's address). LinkedIn, GitHub and CV links. |
 
-- **Header/nav:** name, a one-line title, and links to each section (`#about` etc.), GitHub, [LinkedIn](https://www.linkedin.com/in/seanrei-valdeabella), and the CV PDF.
+- **Header/nav:** name, a one-line title, and links to each section (`#about` etc.), GitHub, [LinkedIn](https://www.linkedin.com/in/seanrei-valdeabella), and the CV PDF. Off the top of the page the bar floats as a card (`Nav/Floating bar`, chosen 2026-11-23): it hides while scrolling down and comes back on scroll up. `Header.tsx` tracks the direction with a small scroll listener, so it works the same in every browser.
 - **Hero:** personal photos only, no project images.
 - **Contact** is the last section of the page, not a separate page. It has links, not a form: a form on a static host would need an outside service.
 - **Empty subsections** are not rendered. For example, Hardware & Homelab stays hidden until it has a project.

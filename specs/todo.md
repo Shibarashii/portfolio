@@ -240,3 +240,16 @@ Also append the hand-listed Introduction to Github entry to Courses.
 
 ## Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site
+
+### T14: Bar comes back on scroll up
+**Description:** Picked by Seanrei on 2026-11-23: behaviour A (hide on scroll down, back on scroll up) and look C from Figma Round 7 (a floating card, `Nav/Floating bar`). At the top of the page the bar is as before. A scroll listener in `Header.tsx` sets the state, so Safari and Firefox match Chrome. No dependency.
+
+**Acceptance criteria:**
+- [x] Scrolling down hides the bar, scrolling up brings it back as a card inset like Figma, and at the top it is the bar from before
+- [x] Nothing on the page moves when the bar floats or hides, and there is no sideways scroll from 320 to 1920 px, light and dark
+- [x] A hidden bar comes back when keyboard focus moves into it, and the phone menu opens from the floating bar as before
+- [x] After a jump up to a section, its heading is not under the bar
+- [ ] Seanrei checks it on the live site
+
+**Dependencies:** T13
+**Files:** `src/components/Header.tsx`, `src/index.css`

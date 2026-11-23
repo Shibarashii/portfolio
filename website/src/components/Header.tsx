@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cvLink, github, linkedin, photo } from '../content.ts'
 
 // Devicon v2.17.0 (MIT), see logos/LICENSES.txt
@@ -13,41 +13,59 @@ const sections = ['About', 'Projects', 'Experience', 'Skills', 'Credentials', 'C
 export function Header() {
   const { caption, ...img } = photo
   const [open, setOpen] = useState(false)
+  // Which way the page last scrolled. Off the top, the bar floats as a card and hides while scrolling down.
+  const [scroll, setScroll] = useState<'top' | 'up' | 'down'>('top')
+  useEffect(() => {
+    let last = 0
+    const onScroll = () => {
+      // Clamped, so the bounce past either end doesn't count as a change of direction
+      const y = Math.max(0, Math.min(scrollY, document.documentElement.scrollHeight - innerHeight))
+      // Small moves don't count, such as the page settling after the menu closes
+      if (y > 0 && Math.abs(y - last) < 10) return
+      setScroll(y === 0 ? 'top' : y > last ? 'down' : 'up')
+      last = y
+    }
+    addEventListener('scroll', onScroll, { passive: true })
+    return () => removeEventListener('scroll', onScroll)
+  }, [])
   return (
     <header>
       <a className="skip-link visually-hidden" href="#main">Skip to main content</a>
-      <div className="bar">
-        <nav aria-label="Sections">
-          <button type="button" className="menu-button" popoverTarget="section-menu">
-            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d={open ? 'M5 5l14 14M19 5L5 19' : 'M4 6h16M4 12h16M4 18h16'} />
-            </svg>
-            <span className="visually-hidden">{open ? 'Close' : 'Menu'}</span>
-          </button>
-          <ul
-            id="section-menu"
-            className="section-menu"
-            popover="auto"
-            onToggle={(e) => setOpen(e.newState === 'open')}
-            // A popover stays open when a link inside it only moves within the page
-            onClick={(e) => open && e.target instanceof HTMLAnchorElement && e.currentTarget.hidePopover()}
-          >
-            {sections.map((s) => <li key={s}><a href={`#${s.toLowerCase()}`}>{s}</a></li>)}
-          </ul>
-        </nav>
-        <nav aria-label="Profiles and CV">
-          <ul>
-            {profiles.map(([l, icon]) => (
-              <li key={l.label}>
-                <a className="icon-link" href={l.url}>
-                  <svg aria-hidden="true" viewBox="0 0 128 128" width="24" height="24" fill="currentColor"><path fillRule="evenodd" d={icon} /></svg>
-                  <span className="visually-hidden">{l.label}</span>
-                </a>
-              </li>
-            ))}
-            <li><a href={cvLink.url}>{cvLink.label}</a></li>
-          </ul>
-        </nav>
+      {/* Holds the bar's place, so nothing moves when the bar floats */}
+      <div className="bar-slot">
+        <div className="bar" data-floating={scroll !== 'top' || undefined} data-hidden={scroll === 'down' || undefined}>
+          <nav aria-label="Sections">
+            <button type="button" className="menu-button" popoverTarget="section-menu">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d={open ? 'M5 5l14 14M19 5L5 19' : 'M4 6h16M4 12h16M4 18h16'} />
+              </svg>
+              <span className="visually-hidden">{open ? 'Close' : 'Menu'}</span>
+            </button>
+            <ul
+              id="section-menu"
+              className="section-menu"
+              popover="auto"
+              onToggle={(e) => setOpen(e.newState === 'open')}
+              // A popover stays open when a link inside it only moves within the page
+              onClick={(e) => open && e.target instanceof HTMLAnchorElement && e.currentTarget.hidePopover()}
+            >
+              {sections.map((s) => <li key={s}><a href={`#${s.toLowerCase()}`}>{s}</a></li>)}
+            </ul>
+          </nav>
+          <nav aria-label="Profiles and CV">
+            <ul>
+              {profiles.map(([l, icon]) => (
+                <li key={l.label}>
+                  <a className="icon-link" href={l.url}>
+                    <svg aria-hidden="true" viewBox="0 0 128 128" width="24" height="24" fill="currentColor"><path fillRule="evenodd" d={icon} /></svg>
+                    <span className="visually-hidden">{l.label}</span>
+                  </a>
+                </li>
+              ))}
+              <li><a href={cvLink.url}>{cvLink.label}</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
       <div className="intro">
         <h1>Hi, I’m Seanrei Valdeabella.</h1>
