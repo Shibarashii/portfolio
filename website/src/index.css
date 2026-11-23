@@ -13,28 +13,28 @@
   font-display: swap;
 }
 
-/* Figma variables: collection Theme (Light here, Dark below) and collection Breakpoint (Mobile here, Desktop below) */
+/* Figma variables: collection Theme (light-dark(Light, Dark)) and collection Breakpoint (Mobile here, Desktop below) */
 :root {
   color-scheme: light dark;
 
-  --color-bg: #d3e8c4;
-  --color-bg-alt: #eff7e9;
-  --color-band: #1e6b3c;
-  --color-skills: #f6c945;
-  --color-card: #ffffff;
-  --color-print: #ffffff;
-  --color-text: #17351f;
-  --color-accent: #a3213c;
-  --color-button: #a3213c;
-  --color-button-hover: #7f172d;
-  --color-on-button: #ffffff;
-  --color-on-band: #ffffff;
-  --color-on-skills: #17351f;
+  --color-bg: light-dark(#d3e8c4, #10231a);
+  --color-bg-alt: light-dark(#eff7e9, #162d21);
+  --color-band: light-dark(#1e6b3c, #1d5f39);
+  --color-skills: light-dark(#f6c945, #57192b);
+  --color-card: light-dark(#ffffff, #213d2d);
+  --color-print: light-dark(#ffffff, #e6ecdd);
+  --color-text: light-dark(#17351f, #eaf3e2);
+  --color-accent: light-dark(#a3213c, #f5a3b2);
+  --color-button: light-dark(#a3213c, #f5a3b2);
+  --color-button-hover: light-dark(#7f172d, #fbd0d8);
+  --color-on-button: light-dark(#ffffff, #34101a);
+  --color-on-band: light-dark(#ffffff, #f4f9ef);
+  --color-on-skills: light-dark(#17351f, #fbe39a);
   --color-on-print: #17351f;
-  --color-stack: #a9cb95;
-  --color-shadow: rgb(13 46 23 / 0.22);
-  --color-shadow-lifted: rgb(13 46 23 / 0.34);
-  --color-shadow-sticker: rgb(89 61 0 / 0.28);
+  --color-stack: light-dark(#a9cb95, #0f1f17);
+  --color-shadow: light-dark(rgb(13 46 23 / 0.22), rgb(0 0 0 / 0.45));
+  --color-shadow-lifted: light-dark(rgb(13 46 23 / 0.34), rgb(0 0 0 / 0.6));
+  --color-shadow-sticker: light-dark(rgb(89 61 0 / 0.28), rgb(0 0 0 / 0.45));
   /* The same in both themes */
   --color-art-sun: #f6c945;
   --color-art-paper: #fbf7e6;
@@ -76,27 +76,15 @@
   --link: var(--color-accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #10231a;
-    --color-bg-alt: #162d21;
-    --color-band: #1d5f39;
-    --color-skills: #57192b;
-    --color-card: #213d2d;
-    --color-print: #e6ecdd;
-    --color-text: #eaf3e2;
-    --color-accent: #f5a3b2;
-    --color-button: #f5a3b2;
-    --color-button-hover: #fbd0d8;
-    --color-on-button: #34101a;
-    --color-on-band: #f4f9ef;
-    --color-on-skills: #fbe39a;
-    --color-stack: #0f1f17;
-    --color-shadow: rgb(0 0 0 / 0.45);
-    --color-shadow-lifted: rgb(0 0 0 / 0.6);
-    --color-shadow-sticker: rgb(0 0 0 / 0.45);
-  }
+/* The theme button pins a theme by setting the color-scheme meta (index.html, Header.tsx). Without it the device decides. */
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
 }
+
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  color-scheme: dark;
+}
+
 
 @media (width >= 48rem) {
   :root {
@@ -478,6 +466,55 @@ header {
   font-size-adjust: from-font;
   background: none;
   cursor: pointer;
+}
+
+/* A thin line, then the theme button, so it doesn't read as one more profile link (Figma Nav/Header) */
+.theme-item {
+  display: flex;
+  align-items: center;
+  column-gap: inherit;
+}
+
+.theme-item::before {
+  content: "";
+  inline-size: 1.5px;
+  block-size: 1.5rem;
+  background: var(--link);
+  opacity: 0.4;
+}
+
+/* As tall as the links. Each icon fills it, so its tooltip shows anywhere on the button. */
+.theme-button {
+  min-block-size: 3rem;
+  padding: 0;
+  border: 0;
+  color: var(--link);
+  background: none;
+  cursor: pointer;
+}
+
+.theme-button > span {
+  display: grid;
+  place-self: stretch;
+  place-items: center;
+}
+
+/* The icon of the theme on screen: the pinned one, else the device's */
+:root:has(> head > meta[name="color-scheme"][content="light"]) .theme-button .when-dark,
+:root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-button .when-light {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="dark"])) .theme-button .when-dark {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-button .when-light {
+    display: none;
+  }
 }
 
 .intro {

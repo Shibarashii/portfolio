@@ -8,7 +8,7 @@ Cover · README · Moodboard → Explorations → Wireframes → Foundations + C
 ## Handoff contract (Figma → `website/`)
 - **Status tag at the start of every Section name:** `[To do]`, `[WIP]`, `[Ready for dev]`, `[Built]`. Only code visual design from `[Ready for dev]` sections, and retag them `[Built]` once shipped.
 - **Breakpoints:** Desktop 1440 and Mobile 375 (the spec's 375px check). Frames are named `Home / Desktop 1440` and `Home / Mobile 375`.
-- **Variables map 1:1 to CSS custom properties:** `color/bg` → `--color-bg`, `space/16` → `--space-16`. Light/Dark modes map to `prefers-color-scheme`.
+- **Variables map 1:1 to CSS custom properties:** `color/bg` → `--color-bg`, `space/16` → `--space-16`. Light/Dark modes map to `light-dark()` pairs, which follow the device unless the theme button pins one.
 - **Component names match React components:** each component's description in Figma names its React component (`Card/Project large` and `Card/Project small` → `ProjectCard`, `Tag/Skill` → `SkillTag`, `Nav/Header` → `Header`).
 - **Content stays in the repo.** Figma shows one example of each card. `content.ts` and the PDFs in this repo are the source of truth for what's listed.
 - **No emojis** in page, section or layer names, or in file copy.
@@ -26,7 +26,7 @@ The look is Family album: photo prints, postcards, stamps and stickers on sage, 
 | Responsive values | Collection Breakpoint, modes Desktop and Mobile: `layout/gutter`, `layout/section-y`, and the font sizes behind each text style |
 | Type | Young Serif for Heading, Title and Caption styles. Hanken Grotesk for Body and Label styles |
 | Shadows | `shadow/print`, `shadow/lifted`, `shadow/sticker`, `shadow/stack` |
-| Components | Button, Link, Nav/Link, Nav/Icon link, Icon/*, Nav/Header, Nav/Floating bar, Nav/Menu, Stamp (Content: Text or Logo), Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Card/Course, Details panel, Card/Contact |
+| Components | Button, Link, Nav/Link, Nav/Icon link, Icon/* (Sun and Moon for the theme button), Nav/Header, Nav/Floating bar, Nav/Menu, Stamp (Content: Text or Logo), Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Card/Course, Details panel, Card/Contact |
 
 Every frame sets its Theme and Breakpoint mode. Dark frames are copies with Theme set to Dark, and their names end in `/ Dark`.
 

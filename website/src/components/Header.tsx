@@ -10,6 +10,23 @@ const profiles = [
 // In page order
 const sections = ['About', 'Projects', 'Experience', 'Skills', 'Credentials', 'Contact']
 
+// index.html sets it from localStorage before the page paints. index.css reads it.
+const schemeMeta = () => document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]')!
+
+// Switches to the theme not on screen. Picking the device's own theme forgets the choice, so the device decides again.
+function toggleTheme() {
+  const device = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  const shown = schemeMeta().content === 'light dark' ? device : schemeMeta().content
+  const next = shown === 'dark' ? 'light' : 'dark'
+  schemeMeta().content = next === device ? 'light dark' : next
+  try {
+    if (next === device) localStorage.removeItem('color-scheme')
+    else localStorage.setItem('color-scheme', next)
+  } catch {
+    // Site data blocked: switched, just not remembered
+  }
+}
+
 export function Header() {
   const { caption, ...img } = photo
   const [open, setOpen] = useState(false)
@@ -27,6 +44,14 @@ export function Header() {
     }
     addEventListener('scroll', onScroll, { passive: true })
     return () => removeEventListener('scroll', onScroll)
+  }, [])
+  // The theme button was pressed in another tab
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === 'color-scheme' || e.key === null) schemeMeta().content = e.newValue ?? 'light dark'
+    }
+    addEventListener('storage', onStorage)
+    return () => removeEventListener('storage', onStorage)
   }, [])
   return (
     <header>
@@ -62,6 +87,24 @@ export function Header() {
                 </li>
               ))}
               <li><a href={cvLink.url} title="Curriculum vitae (PDF)">{cvLink.label}</a></li>
+              {/* After a divider, so it doesn't read as one more profile link. index.css shows the icon of the theme on screen. */}
+              <li className="theme-item">
+                <button type="button" className="icon-link theme-button" onClick={toggleTheme}>
+                  <span className="when-light" title="Switch to dark theme">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <circle cx="12" cy="12" r="5" stroke="none" />
+                      <path fill="none" d="M12 1v2.5M12 20.5V23M1 12h2.5M20.5 12H23M4.2 4.2 6 6M18 18l1.8 1.8M4.2 19.8 6 18M18 6l1.8-1.8" />
+                    </svg>
+                    <span className="visually-hidden">Switch to dark theme</span>
+                  </span>
+                  <span className="when-dark" title="Switch to light theme">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <path d="M10.83 3.08A9 9 0 1 0 20.92 13.17 7.5 7.5 0 0 1 10.83 3.08z" />
+                    </svg>
+                    <span className="visually-hidden">Switch to light theme</span>
+                  </span>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>

@@ -52,6 +52,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 - [x] T12: Animations
 - [ ] T13: Header icons and logo stamps
 - [ ] T14: Bar comes back on scroll up
+- [ ] T15: Theme button
 
 ### Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site

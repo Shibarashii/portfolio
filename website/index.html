@@ -6,6 +6,10 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <!-- Applies a theme picked with the header's theme button before the page paints -->
+    <script>
+      try { document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem('color-scheme') ?? 'light dark' } catch {}
+    </script>
     <title>Seanrei Valdeabella</title>
   </head>
   <body>

@@ -21,7 +21,7 @@ The subsection headings below are the defaults. They live in `content.ts`, so re
 | **Credentials** | Certifications, Assessments, Eligibility, Awards & Recognition, Course Completions | Title, issuer, date, PDF links (optional) |
 | **Contact** | Write to Me, Find Me Online | Email link (the CV's address). LinkedIn, GitHub and CV links. |
 
-- **Header/nav:** name, a one-line title, and links to each section (`#about` etc.), GitHub, [LinkedIn](https://www.linkedin.com/in/seanrei-valdeabella), and the CV PDF. Off the top of the page the bar floats as a card (`Nav/Floating bar`, chosen 2026-11-23): it hides while scrolling down and comes back on scroll up. `Header.tsx` tracks the direction with a small scroll listener, so it works the same in every browser. The icon links and the menu button take their name from a `title`, which is also their hover tooltip; CV's tooltip reads "Curriculum vitae (PDF)".
+- **Header/nav:** name, a one-line title, and links to each section (`#about` etc.), GitHub, [LinkedIn](https://www.linkedin.com/in/seanrei-valdeabella), and the CV PDF. Off the top of the page the bar floats as a card (`Nav/Floating bar`, chosen 2026-11-23): it hides while scrolling down and comes back on scroll up. `Header.tsx` tracks the direction with a small scroll listener, so it works the same in every browser. The icon links and the menu button take their name from a `title`, which is also their hover tooltip; CV's tooltip reads "Curriculum vitae (PDF)". After CV and a thin divider, a theme button (Figma Round 9, D, chosen 2026-11-23) shows a sun or moon for the theme on screen. It follows the device until pressed, then remembers the other theme in this browser; pressing it back to the device's theme forgets the choice.
 - **Favicon:** a 90×90 crop of Seanrei's pixel-art portrait (picked 2026-11-23): `public/favicon.png` (32px, box-filtered) and `public/apple-touch-icon.png` (180px, exact 2×). The art is signed "KHRT"; the crop leaves the signature out. Ask Seanrei how to credit the artist.
 - **Hero:** personal photos only, no project images.
 - **Contact** is the last section of the page, not a separate page. It has links, not a form: a form on a static host would need an outside service.
@@ -97,7 +97,7 @@ The last three were listed as web applications before this revision. They are Wi
 
 ## Tech Stack
 - React 19 + TypeScript + Vite (the `react-ts` template). Node 24 / npm 12.
-- Plain CSS in one file. Light and dark themes via `prefers-color-scheme`.
+- Plain CSS in one file. Light and dark themes as `light-dark()` pairs: they follow the device unless the theme button pins one.
 - No router, no UI library, no Markdown renderer, no test framework.
 - Hosting: GitHub Pages via GitHub Actions, at `https://shibarashii.github.io/portfolio/` (Vite `base: '/portfolio/'`). The repo is public, which Seanrei accepted on 2026-11-21. The certificates are already public on LinkedIn.
 

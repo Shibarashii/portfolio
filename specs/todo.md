@@ -253,3 +253,16 @@ Also append the hand-listed Introduction to Github entry to Courses.
 
 **Dependencies:** T13
 **Files:** `src/components/Header.tsx`, `src/index.css`
+
+### T15: Theme button
+**Description:** Picked by Seanrei on 2026-11-23: placement D from Figma Round 9, a sun or moon button after CV and a thin divider, in every header state. Until it is pressed the site follows the device setting. Pressing it pins the other theme in `localStorage` (`color-scheme`); pressing it back to the device's theme clears it. The colours are `light-dark()` pairs, switched by the `color-scheme` meta. No dependency.
+
+**Acceptance criteria:**
+- [x] With nothing stored the site follows the device, light and dark
+- [x] Pressing it switches theme and remembers it across reloads, with no flash of the other theme; pressing it again forgets the choice
+- [x] The icon shows the theme on screen, and the name and tooltip say what pressing does ("Switch to dark theme")
+- [x] Fits on one line from 320 px, on the green panel, in the floating bar and in the open phone menu
+- [ ] Seanrei checks it on the live site
+
+**Dependencies:** T14
+**Files:** `index.html`, `src/components/Header.tsx`, `src/index.css`
