@@ -80,7 +80,7 @@ The last three were listed as web applications before this revision. They are Wi
 - Text meets WCAG AA (4.5:1) in light and dark themes.
 - Fonts are woff2 files served from the site, with no request to Google and no npm package.
 - No emojis.
-- Motion (chosen 2026-11-22): scroll reveal. Content fades up once as you reach it, one by one, bold. Prints then settle into their tilt and stamps land. `reveal.ts` starts it and `index.css` holds the movement, with no dependency. Nothing moves under `prefers-reduced-motion: reduce`, printing shows everything, and the first screen never fades in, so it does not load later.
+- Motion (chosen 2026-11-22): scroll reveal. Content fades up once as you reach it, one by one, bold. Prints then settle into their tilt and stamps land. `reveal.ts` starts it and `index.css` holds the movement, with no dependency. Nothing moves under `prefers-reduced-motion: reduce`, printing shows everything, and the first screen never fades in, so it does not load later. The phone menu and the Details panels drop in and lift back out when closed (2026-11-23), and Show all slides the course list open and shut. Closing needs `transition-behavior: allow-discrete` and the slide needs `interpolate-size`; browsers without them close at once.
 
 ### Where the existing PDFs go
 | File | Goes to |

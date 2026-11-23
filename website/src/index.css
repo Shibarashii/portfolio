@@ -565,34 +565,40 @@ header {
 }
 
 @media (width < 48rem) {
-  .section-menu:popover-open a {
-    display: block;
-    padding: 0.5rem 0.25rem;
-    font-family: 'Young Serif', Georgia, serif;
-    font-size-adjust: from-font;
-    font-size: var(--title-xl);
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.01em;
+  /* Styled open or closed, so it keeps its look while it fades out. The browser hides it when closed. */
+  @supports selector(:popover-open) {
+    .bar .section-menu a {
+      display: block;
+      padding: 0.5rem 0.25rem;
+      font-family: 'Young Serif', Georgia, serif;
+      font-size-adjust: from-font;
+      font-size: var(--title-xl);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    /* The open menu fills the screen under the bar, which stays on top with Close and the profile links */
+    .section-menu {
+      --fg: var(--color-on-band);
+      --link: var(--color-on-band);
+
+      position: fixed;
+      inset: 3.625rem 0 0;
+      align-content: start;
+      gap: 0.25rem;
+      inline-size: auto;
+      block-size: auto;
+      max-block-size: none;
+      padding: 2rem var(--gutter) 2.5rem;
+      border: 0;
+      color: var(--fg);
+      background: var(--color-band);
+    }
   }
 
-  /* The open menu fills the screen under the bar, which stays on top with Close and the profile links */
   .section-menu:popover-open {
-    --fg: var(--color-on-band);
-    --link: var(--color-on-band);
-
-    position: fixed;
-    inset: 3.625rem 0 0;
     display: grid;
-    align-content: start;
-    gap: 0.25rem;
-    inline-size: auto;
-    block-size: auto;
-    max-block-size: none;
-    padding: 2rem var(--gutter) 2.5rem;
-    border: 0;
-    color: var(--fg);
-    background: var(--color-band);
   }
 
   .bar:has(:popover-open) {
@@ -1518,13 +1524,6 @@ footer p {
   }
 }
 
-@keyframes open {
-  from {
-    opacity: 0;
-    translate: 0 -0.75rem;
-  }
-}
-
 /* Screen only, so printing shows everything */
 @media screen and (prefers-reduced-motion: no-preference) {
   .intro > *,
@@ -1558,8 +1557,46 @@ footer p {
     animation-play-state: paused;
   }
 
-  details[open] > :not(summary),
-  .section-menu:popover-open {
-    animation: open 260ms ease-out;
+  /* Panels and the phone menu drop in and lift out. Closing keeps them shown until the fade ends
+     (allow-discrete). Where a browser can't, they appear the same way and close at once. */
+  details::details-content,
+  .section-menu {
+    transition-property: opacity, translate, block-size, content-visibility, display, overlay;
+    transition-duration: 260ms;
+    transition-timing-function: ease-out;
+    transition-behavior: allow-discrete;
+  }
+
+  details:not([open])::details-content {
+    opacity: 0;
+    translate: 0 -0.75rem;
+  }
+
+  @media (width < 48rem) {
+    .section-menu:not(:popover-open) {
+      opacity: 0;
+      translate: 0 -0.75rem;
+    }
+
+    @starting-style {
+      .section-menu:popover-open {
+        opacity: 0;
+        translate: 0 -0.75rem;
+      }
+    }
+  }
+
+  /* Show all slides the course list open and shut, where the browser can animate to its full height */
+  .courses details::details-content {
+    interpolate-size: allow-keywords;
+    overflow: clip;
+    overflow-clip-margin: 2rem;
+    contain: layout;
+    transition-duration: 450ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .courses details:not([open])::details-content {
+    block-size: 0;
   }
 }
