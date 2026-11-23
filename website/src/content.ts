@@ -67,7 +67,7 @@ export const photo: Image = {
 export const whoIAm: Group<string> = {
   heading: 'Who I Am',
   items: [
-    'I’m a Computer Science graduate of Laguna State Polytechnic University, where I majored in Intelligent Systems. I build full-stack web applications and machine learning models. I interned as a back-end developer at the Department of Science and Technology, working on microservices and REST APIs in TypeScript and Node.js, and I managed the three-person team behind my undergraduate thesis.',
+    'I’m a Computer Science graduate of Laguna State Polytechnic University, where I majored in Intelligent Systems. I build full-stack web applications and machine learning models. I interned as a back-end developer at the Department of Science and Technology, working on microservices and REST APIs in TypeScript and Node.js. I dedicate myself to life-long learning.',
   ],
 }
 
