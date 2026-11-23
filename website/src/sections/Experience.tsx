@@ -16,7 +16,9 @@ export function Experience() {
                 {r.pdf && <p><a href={r.pdf}>Certificate (PDF)<span className="visually-hidden">, {r.role}</span></a></p>}
               </div>
               <div className="postmark">
-                <span className={`stamp serif ${r.stamp.color ?? ''}`} aria-hidden="true">{r.stamp.text}</span>
+                <span className={`stamp logo ${r.stamp.color ?? ''}`} aria-hidden="true">
+                  <img src={r.stamp.logo} alt="" width="64" height="64" loading="lazy" />
+                </span>
                 <p>{r.start} to {r.end ?? 'present'}</p>
               </div>
             </article>

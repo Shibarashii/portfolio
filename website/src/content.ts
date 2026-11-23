@@ -39,8 +39,8 @@ export type Project = {
   image?: Image
 }
 
-// color is a class in index.css. Leaf when left out.
-export type Stamp = { text: string; color?: 'red' | 'sun' }
+// logo is the organisation's seal. color is a class in index.css for the stamp's edge. Leaf when left out.
+export type Stamp = { logo: string; color?: 'red' | 'sun' }
 
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string; stamp: Stamp }
 
@@ -261,7 +261,7 @@ export const experience: Group<Role>[] = [
           'Facilitated knowledge-transfer sessions for peers and new team members on backend systems and development practices.',
         ],
         pdf: ojtCertificate,
-        stamp: { text: 'DOST' },
+        stamp: { logo: logos.dost },
       },
     ],
   },
@@ -278,7 +278,7 @@ export const experience: Group<Role>[] = [
           'Managed team communication and served as the central point for progress updates, task coordination, and conflict resolution.',
           'Maintained project momentum and team morale through active coordination, clear communication, and timely support.',
         ],
-        stamp: { text: 'LSPU', color: 'red' },
+        stamp: { logo: logos.lspu, color: 'red' },
       },
       {
         role: 'Team Leader, Lead Developer',
@@ -290,7 +290,7 @@ export const experience: Group<Role>[] = [
           'Contributed the majority of the codebase, implementing core features and functionality.',
           'Analyzed and reviewed team members’ code to ensure quality and consistency before merging changes into the main codebase.',
         ],
-        stamp: { text: 'LSPU', color: 'sun' },
+        stamp: { logo: logos.lspu, color: 'sun' },
       },
     ],
   },

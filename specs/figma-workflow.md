@@ -26,7 +26,7 @@ The look is Family album: photo prints, postcards, stamps and stickers on sage, 
 | Responsive values | Collection Breakpoint, modes Desktop and Mobile: `layout/gutter`, `layout/section-y`, and the font sizes behind each text style |
 | Type | Young Serif for Heading, Title and Caption styles. Hanken Grotesk for Body and Label styles |
 | Shadows | `shadow/print`, `shadow/lifted`, `shadow/sticker`, `shadow/stack` |
-| Components | Button, Link, Nav/Link, Nav/Header, Nav/Menu, Stamp, Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Card/Course, Details panel, Card/Contact |
+| Components | Button, Link, Nav/Link, Nav/Icon link, Icon/*, Nav/Header, Nav/Menu, Stamp (Content: Text or Logo), Art/*, Print, Logo/*, Tag/Skill, Card/Project large, Card/Project small, Education entry, Card/Role, Card/Credential, Course summary, Card/Course, Details panel, Card/Contact |
 
 Every frame sets its Theme and Breakpoint mode. Dark frames are copies with Theme set to Dark, and their names end in `/ Dark`.
 

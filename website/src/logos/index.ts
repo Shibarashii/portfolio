@@ -40,3 +40,7 @@ export { default as visualstudio } from './visualstudio.svg?url'
 export { default as vite } from './vite.svg?url'
 export { default as vscode } from './vscode.svg?url'
 export { default as windows } from './windows.svg?url'
+
+// Organisation logos, for the Experience stamps
+export { default as dost } from './dost.svg?url'
+export { default as lspu } from './lspu.webp?url'

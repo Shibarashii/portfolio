@@ -50,6 +50,7 @@ T4–T7 don't depend on each other, but they all edit `content.ts` and `App.tsx`
 - [x] T10: Certificate previews and course cards
 - [x] T11: Placeholders for empty cards
 - [x] T12: Animations
+- [ ] T13: Header icons and logo stamps
 
 ### Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site

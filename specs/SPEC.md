@@ -48,7 +48,7 @@ Regrouped 2026-11-22. This list replaces the CV's Technical Skills. Each skill a
 
 Desktop pairs the first six subsections, two to a row. The last two take a row each. Mobile stacks all eight.
 
-Logos: Devicon v2.17.0 (MIT), except Claude Code and Antigravity (LobeHub Icons v1.101.0, MIT), Neon and Render (Simple Icons v16.20.0, CC0), and SQL (letters). Linux is Devicon's SVG resized to a WebP, since the SVG is 194 kB. Matplotlib is Devicon's plain version, as in Figma. Brand logos stay their owners' trademarks. Licenses are in `src/logos/LICENSES.txt`.
+Logos: Devicon v2.17.0 (MIT), except Claude Code and Antigravity (LobeHub Icons v1.101.0, MIT), Neon and Render (Simple Icons v16.20.0, CC0), and SQL (letters). Linux is Devicon's SVG resized to a WebP, since the SVG is 194 kB. Matplotlib is Devicon's plain version, as in Figma. The GitHub and LinkedIn header icons are Devicon too, drawn inline. The Experience stamps use the DOST seal (Wikimedia Commons, public domain) and the LSPU seal (a file Seanrei sent, 2026-11-23). Brand logos and seals stay their owners'. Licenses are in `src/logos/LICENSES.txt`.
 
 ### Projects shown
 These 8 are the full list, in this order. Facts come from each repo, checked on 2026-11-22.
@@ -147,7 +147,7 @@ export type Project = {
   built: string[]         // inside Details
   size?: 'xl' | 'large'   // title size and buttons, small when left out
 }
-export type Stamp = { text: string; color?: 'red' | 'sun' }  // leaf when left out
+export type Stamp = { logo: string; color?: 'red' | 'sun' }  // the seal; color is the edge, leaf when left out
 export type Role = { role: string; org: string; start: string; end?: string; bullets: string[]; pdf?: string; stamp: Stamp }
 export type Credential = { title: string; issuer: string; date?: string; pdf?: string; cover?: string }  // a card with a pdf or cover, else a line
 

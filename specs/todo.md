@@ -225,5 +225,18 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Dependencies:** T8, T10, T11
 **Files:** `src/reveal.ts`, `src/main.tsx`, `src/index.css`
 
+### T13: Header icons and logo stamps
+**Description:** Figma Round 6, picked by Seanrei on 2026-11-23 (A, A, A). GitHub and LinkedIn become icons, the mobile Menu becomes a hamburger that turns into an X, and the Experience stamps show the DOST and LSPU seals on paper. The Contact "Hello" stamp stays text.
+
+**Acceptance criteria:**
+- [x] GitHub and LinkedIn are icons only, 44px wide, and screen readers still hear their names. CV stays a word
+- [x] The menu button shows a hamburger, then an X while open, and is named "Menu" or "Close"
+- [x] Each role stamp is cream paper with the seal, and its dashed edge and frame line take the leaf, red or sun tone
+- [x] Matches the Figma bars and stamps at 320 to 1440 px, light and dark, with no sideways scroll
+- [ ] Seanrei checks it on the live site
+
+**Dependencies:** T8, T11
+**Files:** `src/components/Header.tsx`, `src/sections/Experience.tsx`, `src/content.ts`, `src/index.css`, `src/logos/`
+
 ## Checkpoint C: Complete
 - [ ] All 9 spec success criteria met on the live site
