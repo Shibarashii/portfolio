@@ -52,7 +52,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [x] Web Applications, Machine Learning and Desktop Applications render as `h3` subsections. Each card has a title, a summary, stack, dates, links and details that open on this page.
 - [x] Hardware & Homelab is not rendered while it's empty
 - [x] No two links with the same name go to different places, via a `visually-hidden` class in `index.css`
-- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. ESPA has no source link, and its wording is approved by Seanrei. (Only ESPA is left: its card says `TODO` in `content.ts`. Replace it before the next push.)
+- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. Thesis Proposal Reviewer has no source link, and its wording is approved by Seanrei. (Thesis Proposal Reviewer is client work: written from its README on 2026-11-26, with the system and school left unnamed.)
 
 **Verification:**
 - [x] `npm run build` passes
@@ -201,7 +201,7 @@ Also append the hand-listed Introduction to Github entry to Courses.
 **Dependencies:** T8, Seanrei's OK on the Figma sections
 
 ### T11: Placeholders for empty cards
-**Description:** Projects with no picture (ESPA and Hitboxd today) and certificates with no preview (TOPCIT and Civil Service) get a default picture. Three options were drawn in Figma, Explorations, Round 5 (2026-11-22). Seanrei picked B: a drawn app window or certificate. It is in Components and Designs.
+**Description:** Projects with no picture (Thesis Proposal Reviewer and Hitboxd today) and certificates with no preview (TOPCIT and Civil Service) get a default picture. Three options were drawn in Figma, Explorations, Round 5 (2026-11-22). Seanrei picked B: a drawn app window or certificate. It is in Components and Designs.
 
 **Acceptance criteria:**
 - [x] Seanrei has picked an option

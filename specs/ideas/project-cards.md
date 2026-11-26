@@ -10,7 +10,7 @@ How might we show a recruiter real, working projects at a glance, without fallin
 ## Recommended Direction
 Each project is a full-width card between thin rules, grouped by subsection. Three are large: PC Flipper Toolkit, DAMA and Nail Feature Classifier. The first two use a screenshot with up to three numbered pointers, explained in a list beside it. Nail uses its drawn figure, because it has no interface to show.
 
-The other five are small rows. Three have a plain screenshot, while ESPA and Hitboxd get text cards until they have images. Until Barangay Clearance's screenshots are retaken, it gets a text card too.
+The other five are small rows. Three have a plain screenshot, while Thesis Proposal Reviewer and Hitboxd get text cards until they have images. Until Barangay Clearance's screenshots are retaken, it gets a text card too.
 
 Each card opens in place, with native `<details>`, for what was built and more screenshots. Links stay visible outside it. Together that is also the full record for writing the CV.
 
@@ -34,4 +34,4 @@ Each card opens in place, with native `<details>`, for what was built and more s
 ## Open Questions
 - Will the barangay and feedback screenshots be retaken with neutral data? Until then, Barangay gets a text card and Community Feedback uses its dashboard screen.
 - Can the chosen screenshots be copied into this repo? PC Flipper is already on this machine. The others need downloading.
-- What wording can ESPA use?
+- What wording can Thesis Proposal Reviewer use?

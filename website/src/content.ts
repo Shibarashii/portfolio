@@ -115,12 +115,17 @@ export const projects: Group<Project>[] = [
         ],
       },
       {
-        // TODO: Seanrei's wording. Private repo, so no source link. Replace before the next push.
-        title: 'ESPA',
-        summary: 'TODO',
-        stack: ['TODO'],
+        // Client work: keep the client's system name and school off the site. Private repo, so no source link.
+        title: 'Thesis Proposal Reviewer',
+        summary: 'Scores a thesis concept paper and says what to fix before it reaches the panel. Built for a client.',
+        stack: ['React', 'TypeScript', 'Express', 'SQLite', 'Ollama', 'Qwen 3.5 9B'],
         dates: '2026',
-        built: ['TODO'],
+        built: [
+          'Reads a paper the way a panelist would: an estimated score out of 100, a verdict, weaknesses quoted from the paper, and an improvement plan.',
+          'Flags possible duplicates among past theses, from the moment the student types the title.',
+          'Lets students brainstorm with three AI personas, and faculty review a paper beside the AI’s evaluation.',
+          'Runs Qwen 3.5 9B locally through Ollama, so no student paper is sent to an online AI service.',
+        ],
       },
       {
         title: 'Hitboxd',

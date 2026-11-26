@@ -57,7 +57,7 @@ These 8 are the full list, in this order. Facts come from each repo, checked on 
 | Subsection | Project | Stack | Dates | Links |
 |---|---|---|---|---|
 | Web Applications | PC Flipper Toolkit | React, TypeScript, Django REST Framework, PostgreSQL | 2026 | [source](https://github.com/Shibarashii/pc-flipper-toolkit), [live](https://pc-flipper-toolkit.vercel.app) |
-| Web Applications | ESPA | TODO | 2026 | None: private repo (see Open Questions) |
+| Web Applications | Thesis Proposal Reviewer | Client work, unnamed (2026-11-26) | 2026 | None: private repo (see Open Questions) |
 | Web Applications | Hitboxd | Python, Django | 2026 | [source](https://github.com/Shibarashii/hitboxd) |
 | Machine Learning | Nail Feature Classifier | Python, PyTorch, Grad-CAM | Sep to Nov 2025 | [source](https://github.com/Shibarashii/nail-feature-classifier) |
 | Machine Learning | DAMA Braille Converter | Python, YOLO, Flask, OpenCV, LLM | Dec 2025 | [source](https://github.com/Shibarashii/DAMA-Filipino-Braille-Converter) |
@@ -71,7 +71,7 @@ The last three were listed as web applications before this revision. They are Wi
 - Projects are cards with real screenshots where there are any. The layout is `Card/Project large` and `Card/Project small` in Figma.
 - Two or three projects are large and the rest are small.
 - Details open on this page, and are also the full record for writing the CV.
-- A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). ESPA and Hitboxd have no screenshots yet, so they show text only. On phones the desktop apps' prints are full width, not Figma's 120px thumbnails, so they can be read.
+- A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). Thesis Proposal Reviewer and Hitboxd have no screenshots yet, so they show text only. On phones the desktop apps' prints are full width, not Figma's 120px thumbnails, so they can be read.
 - Screenshots live in `src/screenshots/` and are imported, so a missing one fails the build. Each has alt text, `width` and `height`, and loads lazily unless it shows on the first screen.
 - **Privacy:** Seanrei checks each screenshot at full size before it ships. No real names, emails or addresses.
 
@@ -153,7 +153,7 @@ export type Role = { role: string; org: string; start: string; end?: string; bul
 export type Credential = { title: string; issuer: string; date?: string; pdf?: string; cover?: string }  // a card with a pdf or cover, else a line
 
 export const projects: Group<Project>[] = [
-  { heading: 'Web Applications', items: [/* PC Flipper Toolkit, ESPA, Hitboxd */] },
+  { heading: 'Web Applications', items: [/* PC Flipper Toolkit, Thesis Proposal Reviewer, Hitboxd */] },
   { heading: 'Machine Learning', items: [/* Nail Feature Classifier, DAMA Braille Converter */] },
   { heading: 'Desktop Applications', items: [/* Barangay Clearance, Task Management, Community Feedback */] },
   { heading: 'Hardware & Homelab', items: [] },
@@ -256,7 +256,7 @@ Before the first **push** (the GitHub repo is already public, and nothing has be
 1. **Phone number.** Decided 2026-11-22: it comes off the CV, and the email stays public. It is out of `CurriculumVitae.tex` and the rebuilt `CurriculumVitae.pdf`. The initial commit was redone on 2026-11-22, before any push, so it is out of git history too.
 
 Before T3:
-2. **ESPA is a private repo**, so a source link would be a dead end for recruiters. Default: list it with no source link. Seanrei approves the summary and stack wording, since it describes private work. The spec holds none of its details.
+2. **Thesis Proposal Reviewer is client work in a private repo.** Decided 2026-11-26: the site and this repo never name the client's system or school, so its staff can't tie it to Seanrei. The card says "Built for a client", lists the stack, and has no source link.
 3. **Hitboxd's README only says "Hello."** Anyone who follows the source link lands there. Default: list it, and Seanrei writes the README before launch.
 4. **DAMA:** the link is Seanrei's fork, as asked. The CV links the original repo. The CV says YOLOv8, but `braille_app/app.py` loads YOLOv11s, so the site says "YOLO" until Seanrei confirms.
 5. **Job title** for the top of the page. Decided 2026-11-22: "Computer Science graduate specializing in full-stack development and AI/ML", since Seanrei has no job yet.
