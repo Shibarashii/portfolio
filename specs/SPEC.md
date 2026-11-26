@@ -57,7 +57,7 @@ These 8 are the full list, in this order. Facts come from each repo, checked on 
 | Subsection | Project | Stack | Dates | Links |
 |---|---|---|---|---|
 | Web Applications | PC Flipper Toolkit | React, TypeScript, Django REST Framework, PostgreSQL | 2026 | [source](https://github.com/Shibarashii/pc-flipper-toolkit), [live](https://pc-flipper-toolkit.vercel.app) |
-| Web Applications | Thesis Proposal Reviewer | Client work, unnamed (2026-11-26) | 2026 | None: private repo (see Open Questions) |
+| Web Applications | Thesis Proposal Reviewer | Private, unnamed (2026-11-26) | 2026 | None: private repo (see Open Questions) |
 | Web Applications | Hitboxd | Python, Django | 2026 | [source](https://github.com/Shibarashii/hitboxd) |
 | Machine Learning | Nail Feature Classifier | Python, PyTorch, Grad-CAM | Sep to Nov 2025 | [source](https://github.com/Shibarashii/nail-feature-classifier) |
 | Machine Learning | DAMA Braille Converter | Python, YOLO, Flask, OpenCV, LLM | Dec 2025 | [source](https://github.com/Shibarashii/DAMA-Filipino-Braille-Converter) |
@@ -256,7 +256,7 @@ Before the first **push** (the GitHub repo is already public, and nothing has be
 1. **Phone number.** Decided 2026-11-22: it comes off the CV, and the email stays public. It is out of `CurriculumVitae.tex` and the rebuilt `CurriculumVitae.pdf`. The initial commit was redone on 2026-11-22, before any push, so it is out of git history too.
 
 Before T3:
-2. **Thesis Proposal Reviewer is client work in a private repo.** Decided 2026-11-26: the site and this repo never name the client's system or school, so its staff can't tie it to Seanrei. The card says "Built for a client", lists the stack, and has no source link.
+2. **Thesis Proposal Reviewer is in a private repo.** Decided 2026-11-26: the site and this repo never name the real system or its school. The card lists the stack and has no source link. It does not say who it was built for (2026-11-26).
 3. **Hitboxd's README only says "Hello."** Anyone who follows the source link lands there. Default: list it, and Seanrei writes the README before launch.
 4. **DAMA:** the link is Seanrei's fork, as asked. The CV links the original repo. The CV says YOLOv8, but `braille_app/app.py` loads YOLOv11s, so the site says "YOLO" until Seanrei confirms.
 5. **Job title** for the top of the page. Decided 2026-11-22: "Computer Science graduate specializing in full-stack development and AI/ML", since Seanrei has no job yet.

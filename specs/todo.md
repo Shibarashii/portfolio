@@ -52,7 +52,7 @@ Plan: [plan.md](plan.md). Spec: [SPEC.md](SPEC.md). All commands run from `websi
 - [x] Web Applications, Machine Learning and Desktop Applications render as `h3` subsections. Each card has a title, a summary, stack, dates, links and details that open on this page.
 - [x] Hardware & Homelab is not rendered while it's empty
 - [x] No two links with the same name go to different places, via a `visually-hidden` class in `index.css`
-- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. Thesis Proposal Reviewer has no source link, and its wording is approved by Seanrei. (Thesis Proposal Reviewer is client work: written from its README on 2026-11-26, with the system and school left unnamed.)
+- [ ] Summaries and stacks match the repos and `CurriculumVitae.tex`. Thesis Proposal Reviewer has no source link, and its wording is approved by Seanrei. (Thesis Proposal Reviewer was written from its README on 2026-11-26, with the system and school left unnamed.)
 
 **Verification:**
 - [x] `npm run build` passes

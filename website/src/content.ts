@@ -115,9 +115,9 @@ export const projects: Group<Project>[] = [
         ],
       },
       {
-        // Client work: keep the client's system name and school off the site. Private repo, so no source link.
+        // Private repo, so no source link. Keep the system's real name and school off the site.
         title: 'Thesis Proposal Reviewer',
-        summary: 'Scores a thesis concept paper and says what to fix before it reaches the panel. Built for a client.',
+        summary: 'Scores a thesis concept paper and says what to fix before it reaches the panel.',
         stack: ['React', 'TypeScript', 'Express', 'SQLite', 'Ollama', 'Qwen 3.5 9B'],
         dates: '2026',
         built: [
