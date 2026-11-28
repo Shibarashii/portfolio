@@ -404,7 +404,7 @@ export const credentials: Group<Credential>[] = [
     heading: 'Assessments',
     items: [
       {
-        title: 'TOPCIT',
+        title: 'TOPCIT Level 2',
         issuer: 'Institute for Information & Communications Technology Promotion',
         date: '2025-12-10',
         pdf: topcit,

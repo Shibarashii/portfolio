@@ -5,7 +5,7 @@ Status: approved 2026-11-21. Revision (8 projects, screenshots, Family album loo
 ## Objective
 A single-page portfolio site that:
 - shows a recruiter who Seanrei is and the best projects within the first screen or two, and
-- holds a complete archive of every project, role, certificate and credential, which the CV is later picked from.
+- shows everything in the CV: every project, role, certificate and credential. The CV is the master record, and the site follows it (decided 2026-11-28).
 
 Sections, in order: **About → Projects → Experience → Skills → Credentials → Contact**. Every section is split into subsections (`h3`).
 
@@ -70,7 +70,7 @@ The last three were listed as web applications before this revision. They are Wi
 ### Projects: what any layout must do
 - Projects are cards with real screenshots where there are any. The layout is `Card/Project large` and `Card/Project small` in Figma.
 - Two or three projects are large and the rest are small.
-- Details open on this page, and are also the full record for writing the CV.
+- Details open on this page. Their wording follows the CV, which is the full record.
 - A drawn figure is used only where a screenshot can't show the work (Nail Feature Classifier). Thesis Proposal Reviewer and Hitboxd have no screenshots yet, so they show text only. On phones the desktop apps' prints are full width, not Figma's 120px thumbnails, so they can be read.
 - Screenshots live in `src/screenshots/` and are imported, so a missing one fails the build. Each has alt text, `width` and `height`, and loads lazily unless it shows on the first screen.
 - **Privacy:** Seanrei checks each screenshot at full size before it ships. No real names, emails or addresses.
@@ -258,7 +258,7 @@ Before the first **push** (the GitHub repo is already public, and nothing has be
 Before T3:
 2. **Thesis Proposal Reviewer is in a private repo.** Decided 2026-11-26: the site and this repo never name the real system or its school. The card lists the stack and has no source link. It does not say who it was built for (2026-11-26).
 3. **Hitboxd's README only says "Hello."** Anyone who follows the source link lands there. Default: list it, and Seanrei writes the README before launch.
-4. **DAMA:** the link is Seanrei's fork, as asked. The CV links the original repo. The CV says YOLOv8, but `braille_app/app.py` loads YOLOv11s, so the site says "YOLO" until Seanrei confirms.
+4. **DAMA:** the link is Seanrei's fork, as asked. The CV links the original repo. `braille_app/app.py` loads YOLOv11s, so the CV and the site say "YOLO" until Seanrei confirms.
 5. **Job title** for the top of the page. Decided 2026-11-22: "Computer Science graduate specializing in full-stack development and AI/ML", since Seanrei has no job yet.
 
 Before T9:
@@ -267,7 +267,7 @@ Before T9:
 
 Before T6:
 8. **Adding the 41 skill logos to this repo.** Decided 2026-11-22: approved and added in T6.
-9. **The CV lists fewer skills than the site.** 15 of the skills added 2026-11-22 aren't on the CV, and the CV's "SQL (Postgres)" is two entries here: SQL and PostgreSQL. Decided 2026-11-22: leave the CV as it is for now.
+9. **The CV lists fewer skills than the site.** Resolved 2026-11-28: the CV now lists every skill on the site, in the same groups.
 
 Before T4:
 10. **Hero photo.** Decided 2026-11-22: Seanrei's graduation portrait, cropped to Figma's 440 by 500 and saved as `website/src/photo.webp`, with `fetchpriority="high"` and no lazy loading.

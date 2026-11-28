@@ -10,6 +10,7 @@ This repo holds two things: Seanrei Valdeabella's portfolio documents, and the p
 - `website/`: the website. React + Vite (see "Website" below).
 
 ## Conventions
+- The CV is the master record of Seanrei's skills, experience and accomplishments (decided 2026-11-28). The website and any future one-page resumes are drawn from it, so a change goes into `CurriculumVitae.tex` first, then the site. A resume is a short pick from the CV, never a separate source.
 - Certificate files are named `YYYY-MM-DD. Issuer Title.pdf`, where the date is the completion date. The website should parse its listings from these names, not from a hand-kept copy.
 - Folder names are `snake_case`. File names are left human-readable.
 - Agent-written markdown (intents, specs, plans, ADRs) goes in `specs/`, never `docs/`. When a skill says `docs/...`, use `specs/...` instead (e.g. `docs/intent/x.md` becomes `specs/intent/x.md`). This also applies to `tasks/`: the plan is `specs/plan.md` and the task list is `specs/todo.md`.
